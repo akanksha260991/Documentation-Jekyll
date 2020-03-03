@@ -1,0 +1,701 @@
+# BrowserStack Command Line
+
+#### Documentation for managing your automated mobile app tests on BrowserStack via CLI.
+
+
+BrowserStack App Automate allows you to manage your app testing on our cloud-based infrastructure by providing full integration with the command-line interface (CLI). This document helps you to get started using App Automate from the BrowserStack command line interface.
+
+<br> 
+
+## GETTING STARTED
+Give your users a seamless experience by testing on 2000+ real devices. To start using the CLI for viewing and managing app tests on BrowserStack, you need to authenticate yourself with BrowserStack `username` and `access-key`
+
+## $ browserstack
+
+ #### USAGE
+```
+$ browserstack [flags]
+$ browserstack [commands]
+```
+
+ #### COMMANDS
+```
+authenticate              Set/Update your Browserstack credentials
+app-automate              Automated mobile app testing on Real Mobile devices
+version                   Get the version of Browserstack CLI
+help                      Help about any command
+```
+
+#### FLAGS
+```
+    --config             Config file for your tests. Default: $HOME/.browserstack-cli.yaml
+-h, --help               Help for  Browserstack CLI
+-v, --verbose            Run in verbose mode
+```
+<br>
+
+## $ browserstack authenticate
+
+ #### DESCRIPTION
+The command will ask for your `BrowserStack Username` and `BrowserStack Access-Key`. Your credentials will be verified. Once the verification is successful you can start using CLI commands. You can fetch the credentials from the [App Automate Dashboard](https://app-automate.browserstack.com/dashboard/v2)
+
+<br>
+
+## $ browserstack app-automate
+
+ #### DESCRIPTION
+Run your automated Mobile app tests on the real mobile devices offeref by BrowserStack. We currently support Appium, Espresso, XCUITest and EarlGrey automation frameworks.
+
+ #### USAGE
+```
+$ browserstack app-automate [commands]
+```
+
+ #### COMMANDS
+```
+apps                    Manage your uploaded mobile apps on BrowserStack
+testsuite               Manage your TestSuite for different Frameworks(Espresso/XCUITests/EarlGrey)
+devices                 List of all Devices available for Testing
+plan-status             Get plan details - Number of parallels allowed, currently running and queued
+espresso                Run your Espresso mobile app tests
+xcuitest                Run your XCUITest mobile app tests
+```
+
+ #### FLAGS
+```
+    --config             Config file for your tests. Default: $HOME/.browserstack-cli.yaml
+-h, --help               Help for  Browserstack CLI
+-v, --verbose            Run in verbose mode
+```
+<br>
+<br>
+
+## $ browserstack app-automate apps
+
+ #### DESCRIPTION
+Manage your apps uploaded on BrowserStack. Upload, delete or view the list of uploaded apps.
+> Note: We will delete the uploaded app after 30 days from the date of upload
+
+ #### USAGE
+```
+$ browserstack app-automate apps [commands]
+```
+
+ #### COMMANDS
+```
+list                    List apps uploaded on BrowserStack
+upload                  Upload app on BrowserStack
+delete                  Delete app uploaded on BrowserStack
+```
+<br>
+<br>
+
+## $ browserstack app-automate apps upload
+
+ #### DESCRIPTION
+Upload your app on BrowserStack using the required flags `path`/ `url` and `framework`.
+> Note: App upload will take few seconds to about a minute depending on the size of your app. If you upload an iOS app, we will resign the app with our own provisioning profile to be able to install your app on our devices during test execution
+ 
+ #### USAGE
+```
+$ browserstack app-automate apps upload [flags]
+```
+
+ #### FLAGS
+```
+-p, --path              [*] Local path to your app 
+-u, --url               [*] Public URL of app
+-f, --framework         [*] TestSuite framework. Values: espresso/xcuitest/earlgrey 
+    --custom_id             Set a custom_id to the uploaded app. custom_id allows to upload multiple apps under same name
+    --help                  Help for upload
+```
+
+ #### EXAMPLE
+```
+$ /browserstack-cli app-automate apps upload --path "/path/to/my/directory/apps-debug.apk"
+```
+<br>
+<br>
+
+## $ browserstack app-automate apps delete
+
+ #### DESCRIPTION
+Delete an app from the list of Uploaded apps on BrowserStack using the required flag `app`
+> Note: `app` is the hashed id returned when app is uploaded on BrowserStack. Format: `bs://<hashed-id>` . We automatically delete the uploaded app after 30 days from the date of upload
+ 
+ #### USAGE
+```
+$ browserstack app-automate apps delete [flags]
+```
+
+ #### FLAGS
+```
+-a, --app              [*] app url (bs://<hashed-id>) of the app the user want to delete
+-h, --help                 Help for delete
+```
+
+ #### EXAMPLE
+```bash
+$ browserstack app-automate apps delete --app "de6cc2c44ddb49efbb48c775387b9832fec5c2bb"
+```
+<br>
+<br>
+
+## $ browserstack app-automate apps list
+
+ #### DESCRIPTION
+ Get the list of uploaded apps on Browserstack. The response is presented in the JSON format
+ 
+ #### USAGE
+```
+$ browserstack app-automate apps list
+```
+<br>
+<br>
+
+## $ browserstack app-automate testsuite
+
+ #### DESCRIPTION
+ Manage your TestSuite for Frameworks (Espresso | Xcuitest | EarlGrey)
+ 
+ #### USAGE
+```
+$ browserstack app-automate testsuite
+```
+
+ #### COMMANDS
+```
+list                  List test suite uploaded on BrowserStack
+upload                Upload test suite on BrowserStack
+delete                Delete test suite uploaded on BrowserStack
+```
+<br>
+<br>
+
+## $ browserstack app-automate testsuite upload
+
+ #### DESCRIPTION
+ Upload TestSuite to BrowserStack using the required flags `path` / `url` and `framework`
+ 
+ #### USAGE
+```
+$ browserstack app-automate testsuite upload [flags]
+```
+
+ #### COMMANDS
+```
+-p, --path              [*] Local path of test suite 
+-u, --url               [*] Public URL of test suite
+-f, --framework         [*] test suite framework. Values: espresso/xcuitest/earlgrey 
+    --custom_id             Set a custom_id to uploaded test suite. It allows to upload multiple apps under same name
+    --help                  Help for upload
+```
+
+ #### EXAMPLE
+```bash
+$ /browserstack app-automate testsuite --path "/path/to/my/testsuite/directory/apps-debug-Test.apk" --framework "espresso"
+```
+<br>
+<br>
+
+
+## DEVICES
+Run Automated App testing on an extensive list of real iOS and Android devices. Choose from a wide range of physical mobile and tablets devices including iPhone, Samsung Galaxy, Nexus, Pixel, etc for maximum market coverage. View the [list of devices available](https://www.browserstack.com/list-of-browsers-and-platforms/app_automate)
+
+
+## $ browserstack app-automate devices
+ 
+ #### DESCRIPTION
+ List all the devices (in JSON format) supported on BrowserStack. 
+ 
+ #### USAGE
+```
+$ browserstack app-automate devices
+```
+
+ #### OUTPUT
+ The output will be a list of devices in JSON object array: 
+
+```bash
+ {
+    "device": "iPhone XS",
+    "os": "ios",
+    "os_version": "13",
+    "realMobile": true
+  },
+   {
+    "device": "iPhone 6",
+    "os": "ios",
+    "os_version": "11",
+    "realMobile": true
+  }
+ ```
+  <br>
+  <br>
+
+## $ browserstack app-automate devices -t
+
+ #### DESCRIPTION
+ Get all the devices (in tabluar format) supported on BrowserStack. 
+ 
+ 
+ ![Device List](https://github.com/akanksha260991/BrowserStack-CLI/blob/master/Screenshot%202019-09-25%20at%201.23.47%20PM.png)
+ 
+The first column of the command output, `DEVICE`, contains the name of the devices that you can use later to run tests on a specific model. The `OS_VERSION` column lists the operating system versions supported by that device. You need to specify both the `DEVICE` and `OS_VERSION` for running tests on BrowserStack.
+<br>
+<br>
+
+## $ browserstack app-automate plan-status
+
+ #### DESCRIPTION
+ Get the information about your group's App Automate plan,  including your plan name, maximum number of parallel sessions allowed, the number of parallel sessions currently running and the number of parallel sessions queued.
+ 
+ #### USAGE
+```
+$ browserstack app-automate plan-status
+```
+
+#### OUTPUT
+ The output will be in JSON format: 
+
+```bash
+ {
+  "automate_plan": "App Automate",
+  "parallel_sessions_max_allowed": 25,
+  "parallel_sessions_running": 0,
+  "queued_sessions": 0,
+  "queued_sessions_max_allowed": 25,
+  "team_parallel_sessions_max_allowed": 25
+}
+ ```
+The plan-status can be helpful for polling how many parallels are being used at any given point and add more tests once your used parallels get available.
+<br>
+<br>
+<br>
+
+
+## MANAGE APPIUM TESTS
+Run your Appium test scripts on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=appium) by updating the code snippets with the BrowserStack's authentication keys and desired capabilities. You can view and manage your Appium test executions via the CLI using the following set of commands:
+
+## $ browserstack app-automate appium
+
+ #### DESCRIPTION
+ View and manage your Appium test automation scripts executed on BrowserStack's real devices
+
+ #### USAGE
+```
+$ browserstack app-automate appium [command]
+```
+
+#### COMMANDS
+```
+projects               View and Manage all the projects associated with your account
+builds                 View and Manage all the builds associated with your account
+sessions               View and Manage all the sessions associated with your builds
+debug-test             Range of debugging tools provided by BrowserStack to easily debug your test automation for mobile apps
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium projects
+
+ #### DESCRIPTION
+ View and manage all the projects associated with your account. Projects are organizational structures for builds executed on BrowserStack. 
+
+ #### USAGE
+```
+$ browserstack app-automate appium projects [command]
+```
+
+ #### COMMANDS
+```
+list                     List of recent projects
+info                     Get info about a project                             
+delete                   Delete a project
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium projects list
+
+ #### DESCRIPTION
+ List all the recent projects of your account. Once the list of projects is available, more specific information about a specific project can be queried using project ID.
+ 
+ #### USAGE
+```
+$ browserstack app-automate appium projects list
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium projects info
+
+ #### DESCRIPTION
+ Get info about a project of your account using the required flag `Project ID`.
+ 
+  #### USAGE
+```
+$ browserstack app-automate appium projects info [flags]
+```
+
+ #### FLAGS
+```
+-p, --project-id=project-id        [*] Project ID
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium projects delete
+ 
+ #### DESCRIPTION
+ Delete a project of your account using the required flag `Project ID`. 
+ > Note that to delete a project, it needs to be empty of builds and sessions
+
+ 
+  #### USAGE
+```
+$ browserstack app-automate appium projects delete [flags]
+```
+
+ #### FLAGS
+```
+-p, --project-id=project-id        [*] Project ID
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium builds
+
+ #### DESCRIPTION
+ View and manage all the builds associated with your account. Builds are organizational structures for tests. 
+ 
+  #### USAGE
+```
+$ browserstack app-automate appium builds
+```
+
+ #### COMMANDS
+```
+list                       List the recent builds
+delete                     Delete a build
+session-list               List of all sessions within a build
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium builds list
+
+ #### DESCRIPTION
+ List the recent builds of your account.
+
+ #### USAGE
+```
+$ browserstack app-automate appium builds list
+```
+<br>
+<br>
+
+## $ browserstack app-automate appium builds delete
+
+ #### DESCRIPTION
+ Delete a build of your account using the required flag `Build ID`.
+ > Note that deleting a build will delete all the sessions contained within it.
+
+ #### USAGE
+```
+$ browserstack app-automate appium builds delete [flags]
+```
+
+ #### FLAGS
+ ```
+ -b, --build-id=build-id       [*] Build ID
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium builds session-list
+
+ #### DESCRIPTION
+ Retrieve a list of sessions under a particular build using the required flag `Build ID`
+
+ #### USAGE
+```
+$ browserstack app-automate appium builds session-list
+```
+
+ #### FLAGS
+ ```
+ -b, --build-id=build-id        [*] Build ID
+ ```
+<br>
+<br>
+<br>
+
+## $ browserstack app-automate appium sessions
+
+#### DESCRIPTION
+ View and Manage all the sessions associated with your builds
+
+ #### USAGE
+```
+$ browserstack app-automate appium sessions [command]
+```
+
+ #### COMMANDS
+ ```
+info                  Get info of a session
+api-status            Mark your session/test as Passed/Failed. You can also pass a reason for failure if required
+delete                Delete a session
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium sessions info
+
+#### DESCRIPTION
+ Once the list of sessions is available, more specific information about a particular session can be queried by using the required flag `Session ID`
+
+ #### USAGE
+```
+$ browserstack app-automate appium sessions info [flags]
+```
+
+ #### FLAGS
+ ```
+-s,  --session-id=session-id   [*] Session ID
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium sessions set-status
+
+ #### DESCRIPTION
+ Mark your Appium sessions as Passed/Failed. The required flags are `Session ID` and `Status`. Also `reason`(optional) for failure can be specified e.g "Element Not Found"
+
+ #### USAGE
+```
+$ browserstack app-automate appium sessions info [flags]
+```
+
+ #### FLAGS
+ ```
+-s, --session-id=session-id        [*] Session ID
+     --status=status                [*] Set the status as Passed/Failed. Values: Passed/Failed
+     --reason=reason                    Pass a reason for the failure
+ ```
+<br>
+<br>
+<br>
+<br>
+
+## DEBUG - APPIUM TESTS
+You can debug your Appium script executions on BrowserStacks using range of debugging options available. List of command to debug and fetch logs via CLI are:
+
+## $ browserstack app-automate appium debug
+
+ #### DESCRIPTION
+ Range of debugging tools provided by BrowserStack to easily debug your test automation for mobile apps
+
+ #### USAGE
+```
+$ browserstack app-automate appium debug [command]
+```
+ #### COMMANDS
+ ```
+text-logs               Session Logs in text format
+device-logs             Device Logs of your session execution
+appium-logs             Appium Logs of your session execution
+network-logs            Session Logs in HAR (HTTP Archive) format
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium debug text-logs 
+  
+ #### DESCRIPTION
+ Get the logs for all your requests and responses for the session executed on BrowserStack's real devices
+
+ #### USAGE
+```
+$ browserstack app-automate appium debug text-logs  [flags]
+```
+ 
+ #### FLAGS
+ ```
+-b, --build-id=build-id        [*] Build ID 
+-s, --session-id=session-id    [*] Session ID
+ ```
+  
+  #### EXAMPLE
+ ```bash
+ $ browserstack app-automate appium debug text-logs --build-id "8a46fdeb1dfssdd11a168292ac0925be06yy19e8" --session-id "e015915c695bn76dcbbebc26d566t489916e53ae"
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium debug device-logs 
+  
+ #### DESCRIPTION
+ Get the device level logs for the session executed on the BrowserStack's real devices
+
+ #### USAGE
+```
+$ browserstack app-automate appium debug device-logs [flags]
+```
+ #### FLAGS
+ ```
+-b, --build-id=build-id        [*] Build ID 
+-s, --session-id=session-id    [*] Session ID
+ ```
+
+#### EXAMPLE
+ ```bash
+ $ browserstack app-automate appium debug device-logs --build-id "8a46fdeb1dfssdd11a168292ac0925be06yy19e8" --session-id "e015915c695bn76dcbbebc26d566t489916e53ae"
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium debug network-logs 
+  
+ #### DESCRIPTION
+ Get the Network Logs in HAR (HTTP Archive) format for the session executed on the BrowserStack's real devices
+
+ #### USAGE
+```
+$ browserstack app-automate appium debug network-logs [flags]
+```
+ 
+ #### FLAGS
+ ```
+-b, --build-id=build-id        [*] Build ID 
+-s, --session-id=session-id    [*] Session ID
+ ```
+<br>
+<br>
+
+## $ browserstack app-automate appium debug appium-logs 
+  
+ #### DESCRIPTION
+ Get the Logs for your Appium Sessions executed on the BrowserStack's real devices
+
+ #### USAGE
+```
+$ browserstack app-automate appium debug appium-logs [flags]
+```
+ 
+ #### FLAGS
+ ```
+-b, --build-id=build-id        [*] Build ID 
+-s, --session-id=session-id    [*] Session ID
+ ```
+<br>
+<br>
+<br>
+
+## RUN ESPRESSO TESTS ON BROWSERSTACK
+Run your Espresso tests on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You can run your Espresso tests via the CLI using the following set of commands:
+
+## $ browserstack app-automate espresso
+ 
+ #### DESCRIPTION
+ BrowserStack supports Espresso automated mobile app tests using Java , and running your tests on our cloud setup of Real Devices
+
+ #### USAGE
+```
+$ browserstack app-automate espresso [command]
+```
+
+ #### COMMANDS
+ ```
+ run                     Execute your Espresso tests on Browserstack's Real Devices
+ ```
+ <br>
+ <br>
+  
+## $ browserstack app-automate espresso run
+ 
+ #### DESCRIPTION
+ Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso) using the required flags `app`, `testSuite`, `device`
+
+ #### USAGE
+```
+$ browserstack app-automate espresso run [flags]
+```
+ #### FLAGS
+```
+     --app                     [*] Local path of app or app_url(bs://<hashed_id>) of app uploaded on BrowserStack
+     --testSuite               [*] Local path of test app or test_url(bs://<hashed_id>) of app uploaded on the BrowserStack
+ -d, --device                  [*] Device name. Format: devicename-os_version. Values: -d = Google Nexus 6-6.0.
+     --projectname                 Set project name to group your test executions under one build
+     --devicelogs                  Device Logs for your tests. Value: true/false
+     --numShards                   Break test cases into shards
+     --shardIndex                  Specify the shard number to run a specific shard. Values: 0 to (numShards-1)
+     --local                       Enable local testing. Value: true/false (Default Value = false)
+     --video                       Enable/Disable the video of the test run. Value: true/false (Default Value = true) 
+     --orientation                 Change screen orientation of mobile. Value: portrait/landscape (Default Value = portrait)
+     --help
+ ```
+> Note: In order to shard your tests, both `numShards` and `shardIndex` are required flags. E.g To break test cases into four shards and run only the first shard the flag values will be --numShards 4 and --shardIndex 0
+<br>
+
+> Note: For executing the test in multiple devices, use the `device` flag multiple times.
+
+ #### EXAMPLE
+```bash
+$ browserstack app-automate espresso run --app "app-debug.apk" --testSuite "app-debug-Test.apk" --device "Google Nexus 6-6.0" --device "Samsung Galaxy S9-8.0" --projectname "MyEspressoTest" --numShard 4 --shardIndex 0
+```
+<br>
+<br>
+<br>
+
+## RUN XCUITEST ON BROWSERSTACK
+Run your XCUITests for iOS on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You can run your XCUITest via the CLI using the following set of commands:
+
+## $ browserstack app-automate xcuitest
+
+ #### DESCRIPTION
+BrowserStack supports XCUITest framework for iOS mobile app testing, and running your tests on our cloud setup is simple and straightforward.
+ 
+ #### USAGE
+```
+$ browserstack app-automate xcuitest [command]
+```
+#### COMMANDS
+ ```
+ run                     Execute your XCUITests on Browserstack's Real Devices
+ ```
+ <br>
+ <br>
+ 
+ ## $ browserstack app-automate xcuitest run
+ 
+ #### DESCRIPTION
+ Run your [XCUITests on BrowserStack](https://www.browserstack.com/app-automate/xcuitest/get-started) using the required flags `app`, `testSuite`, `device`. The test suite needs to be a zip file.
+
+ #### USAGE
+```
+$ browserstack app-automate xcuitest run [flags]
+```
+ #### FLAGS
+```
+     --app                     [*] Local path of app or app_url(bs://<hashed_id>) of app uploaded on BrowserStack
+     --testSuite               [*] Local path of test app or test_url(bs://<hashed_id>) of app uploaded on the BrowserStack
+ -d, --device                  [*] Device name. Format: devicename-os_version. Values: -d = Google Nexus 6-6.0.
+     --projectname                 Set project name to group your test executions under one build
+     --devicelogs                  Device Logs for your tests. Value: true/false
+     --only-testing                Specify the selected classes to be tested. Multiple values allowed
+     --local                       Enable local testing. Value: true/false (Default Value = false)
+     --video                       Enable/Disable the video of the test run. Value: true/false (Default Value = true) 
+     --orientation                 Change screen orientation of mobile. Value: portrait/landscape (Default Value = portrait)
+     --help
+ ```
+<br>
+
+> Note For executing the test in multiple devices, use the `device` or `d` flag multiple times.  
+
+ #### EXAMPLE
+```bash
+$ browserstack app-automate xcuitest run --app "app-debug.ipa" --testSuite "app-debug-Test.zip" --device "
+iPhone 7-12.0" --device "iPhone X-11" --projectname "MyXCUITest" --only-testing "SampleXCUITestsClass/SampleXCUITestsPackage"
+```
+

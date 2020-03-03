@@ -1,16 +1,31 @@
-# BrowserStack Command Line
+# BrowserStack CLI - App Automate (Beta)
 
-#### Documentation for managing your automated mobile app tests on BrowserStack via CLI.
+#### The CLI provides a set of simple commands to upload apps, manage your test executions and much more. This guide will help you setup and use BrowserStack CLI for your automated mobile app testing
 
 
-BrowserStack App Automate allows you to manage your app testing on our cloud-based infrastructure by providing full integration with the command-line interface (CLI). This document helps you to get started using App Automate from the BrowserStack command line interface.
+## INTRODUCTION
+BrowserStack App Automate allows you to manage your app testing on our cloud-based infrastructure by providing full integration with the command-line interface (CLI). Follow the steps below to setup BrowserStack CLI on your machine:
+
+1. Download the BrowserStack binary for CLI:
+ ⋅⋅* [OS X 32-bit (10.7 and above)](https://browserstack.com/browserstack-cli/download?arch=386&file=browserstack&os=darwin&version=1.0.0)
+ ⋅⋅* [OS X 64-bit (10.7 and above)](https://browserstack.com/browserstack-cli/download?arch=amd64&file=browserstack&os=darwin&version=1.0.0)
+ ⋅⋅* [Linux 32-bit](https://browserstack.com/browserstack-cli/download?arch=386&file=browserstack&os=linux&version=1.0.0)
+ ⋅⋅* [Linux 64-bit](https://browserstack.com/browserstack-cli/download?arch=amd64&file=browserstack&os=linux&version=1.0.0)
+ ⋅⋅* [Windows 32-bit (XP and above)](https://browserstack.com/browserstack-cli/download?arch=386&file=browserstack.exe&os=windows&version=1.0.0)
+ ⋅⋅* [Windows 64-bit (XP and above)](https://browserstack.com/browserstack-cli/download?arch=amd64&file=browserstack.exe&os=windows&version=1.0.0)
+
+2. Open your terminal and navigate to the folder containing the BrowserStack CLI binary.
+
+3. Make the BrowserStack CLI executable by running the following command:
+   For MAC and Linux machines:
+   ```chmod +x browserstack```
 
 <br> 
 
 ## GETTING STARTED
 Give your users a seamless experience by testing on 2000+ real devices. To start using the CLI for viewing and managing app tests on BrowserStack, you need to authenticate yourself with BrowserStack `username` and `access-key`
 
-## $ browserstack
+## browserstack
 
  #### USAGE
 ```
@@ -34,7 +49,7 @@ help                      Help about any command
 ```
 <br>
 
-## $ browserstack authenticate
+## browserstack authenticate
 
  #### DESCRIPTION
 The command will ask for your `BrowserStack Username` and `BrowserStack Access-Key`. Your credentials will be verified. Once the verification is successful you can start using CLI commands. You can fetch the credentials from the [App Automate Dashboard](https://app-automate.browserstack.com/dashboard/v2)
@@ -70,7 +85,7 @@ xcuitest                Run your XCUITest mobile app tests
 <br>
 <br>
 
-## $ browserstack app-automate apps
+## browserstack app-automate apps
 
  #### DESCRIPTION
 Manage your apps uploaded on BrowserStack. Upload, delete or view the list of uploaded apps.
@@ -90,7 +105,7 @@ delete                  Delete app uploaded on BrowserStack
 <br>
 <br>
 
-## $ browserstack app-automate apps upload
+## browserstack app-automate apps upload
 
  #### DESCRIPTION
 Upload your app on BrowserStack using the required flags `path`/ `url` and `framework`.
@@ -117,7 +132,7 @@ $ /browserstack-cli app-automate apps upload --path "/path/to/my/directory/apps-
 <br>
 <br>
 
-## $ browserstack app-automate apps delete
+## browserstack app-automate apps delete
 
  #### DESCRIPTION
 Delete an app from the list of Uploaded apps on BrowserStack using the required flag `app`
@@ -141,7 +156,7 @@ $ browserstack app-automate apps delete --app "de6cc2c44ddb49efbb48c775387b9832f
 <br>
 <br>
 
-## $ browserstack app-automate apps list
+## browserstack app-automate apps list
 
  #### DESCRIPTION
  Get the list of uploaded apps on Browserstack. The response is presented in the JSON format
@@ -153,7 +168,7 @@ $ browserstack app-automate apps list
 <br>
 <br>
 
-## $ browserstack app-automate testsuite
+## browserstack app-automate testsuite
 
  #### DESCRIPTION
  Manage your TestSuite for Frameworks (Espresso | Xcuitest | EarlGrey)
@@ -172,7 +187,7 @@ delete                Delete test suite uploaded on BrowserStack
 <br>
 <br>
 
-## $ browserstack app-automate testsuite upload
+## browserstack app-automate testsuite upload
 
  #### DESCRIPTION
  Upload TestSuite to BrowserStack using the required flags `path` / `url` and `framework`
@@ -203,7 +218,7 @@ $ /browserstack app-automate testsuite --path "/path/to/my/testsuite/directory/a
 Run Automated App testing on an extensive list of real iOS and Android devices. Choose from a wide range of physical mobile and tablets devices including iPhone, Samsung Galaxy, Nexus, Pixel, etc for maximum market coverage. View the [list of devices available](https://www.browserstack.com/list-of-browsers-and-platforms/app_automate)
 
 
-## $ browserstack app-automate devices
+## browserstack app-automate devices
  
  #### DESCRIPTION
  List all the devices (in JSON format) supported on BrowserStack. 
@@ -233,7 +248,7 @@ $ browserstack app-automate devices
   <br>
   <br>
 
-## $ browserstack app-automate devices -t
+## browserstack app-automate devices -t
 
  #### DESCRIPTION
  Get all the devices (in tabluar format) supported on BrowserStack. 
@@ -245,7 +260,7 @@ The first column of the command output, `DEVICE`, contains the name of the devic
 <br>
 <br>
 
-## $ browserstack app-automate plan-status
+## browserstack app-automate plan-status
 
  #### DESCRIPTION
  Get the information about your group's App Automate plan,  including your plan name, maximum number of parallel sessions allowed, the number of parallel sessions currently running and the number of parallel sessions queued.
@@ -277,7 +292,7 @@ The plan-status can be helpful for polling how many parallels are being used at 
 ## MANAGE APPIUM TESTS
 Run your Appium test scripts on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=appium) by updating the code snippets with the BrowserStack's authentication keys and desired capabilities. You can view and manage your Appium test executions via the CLI using the following set of commands:
 
-## $ browserstack app-automate appium
+## browserstack app-automate appium
 
  #### DESCRIPTION
  View and manage your Appium test automation scripts executed on BrowserStack's real devices
@@ -297,7 +312,7 @@ debug-test             Range of debugging tools provided by BrowserStack to easi
 <br>
 <br>
 
-## $ browserstack app-automate appium projects
+## browserstack app-automate appium projects
 
  #### DESCRIPTION
  View and manage all the projects associated with your account. Projects are organizational structures for builds executed on BrowserStack. 
@@ -316,7 +331,7 @@ delete                   Delete a project
 <br>
 <br>
 
-## $ browserstack app-automate appium projects list
+## browserstack app-automate appium projects list
 
  #### DESCRIPTION
  List all the recent projects of your account. Once the list of projects is available, more specific information about a specific project can be queried using project ID.
@@ -328,7 +343,7 @@ $ browserstack app-automate appium projects list
 <br>
 <br>
 
-## $ browserstack app-automate appium projects info
+## browserstack app-automate appium projects info
 
  #### DESCRIPTION
  Get info about a project of your account using the required flag `Project ID`.
@@ -345,7 +360,7 @@ $ browserstack app-automate appium projects info [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium projects delete
+## browserstack app-automate appium projects delete
  
  #### DESCRIPTION
  Delete a project of your account using the required flag `Project ID`. 
@@ -364,7 +379,7 @@ $ browserstack app-automate appium projects delete [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium builds
+## browserstack app-automate appium builds
 
  #### DESCRIPTION
  View and manage all the builds associated with your account. Builds are organizational structures for tests. 
@@ -383,7 +398,7 @@ session-list               List of all sessions within a build
 <br>
 <br>
 
-## $ browserstack app-automate appium builds list
+## browserstack app-automate appium builds list
 
  #### DESCRIPTION
  List the recent builds of your account.
@@ -395,7 +410,7 @@ $ browserstack app-automate appium builds list
 <br>
 <br>
 
-## $ browserstack app-automate appium builds delete
+## browserstack app-automate appium builds delete
 
  #### DESCRIPTION
  Delete a build of your account using the required flag `Build ID`.
@@ -413,7 +428,7 @@ $ browserstack app-automate appium builds delete [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium builds session-list
+## browserstack app-automate appium builds session-list
 
  #### DESCRIPTION
  Retrieve a list of sessions under a particular build using the required flag `Build ID`
@@ -431,7 +446,7 @@ $ browserstack app-automate appium builds session-list
 <br>
 <br>
 
-## $ browserstack app-automate appium sessions
+## browserstack app-automate appium sessions
 
 #### DESCRIPTION
  View and Manage all the sessions associated with your builds
@@ -450,7 +465,7 @@ delete                Delete a session
 <br>
 <br>
 
-## $ browserstack app-automate appium sessions info
+## browserstack app-automate appium sessions info
 
 #### DESCRIPTION
  Once the list of sessions is available, more specific information about a particular session can be queried by using the required flag `Session ID`
@@ -467,7 +482,7 @@ $ browserstack app-automate appium sessions info [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium sessions set-status
+## browserstack app-automate appium sessions set-status
 
  #### DESCRIPTION
  Mark your Appium sessions as Passed/Failed. The required flags are `Session ID` and `Status`. Also `reason`(optional) for failure can be specified e.g "Element Not Found"
@@ -491,7 +506,7 @@ $ browserstack app-automate appium sessions info [flags]
 ## DEBUG - APPIUM TESTS
 You can debug your Appium script executions on BrowserStacks using range of debugging options available. List of command to debug and fetch logs via CLI are:
 
-## $ browserstack app-automate appium debug
+## browserstack app-automate appium debug
 
  #### DESCRIPTION
  Range of debugging tools provided by BrowserStack to easily debug your test automation for mobile apps
@@ -510,7 +525,7 @@ network-logs            Session Logs in HAR (HTTP Archive) format
 <br>
 <br>
 
-## $ browserstack app-automate appium debug text-logs 
+## browserstack app-automate appium debug text-logs 
   
  #### DESCRIPTION
  Get the logs for all your requests and responses for the session executed on BrowserStack's real devices
@@ -533,7 +548,7 @@ $ browserstack app-automate appium debug text-logs  [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium debug device-logs 
+## browserstack app-automate appium debug device-logs 
   
  #### DESCRIPTION
  Get the device level logs for the session executed on the BrowserStack's real devices
@@ -555,7 +570,7 @@ $ browserstack app-automate appium debug device-logs [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium debug network-logs 
+## browserstack app-automate appium debug network-logs 
   
  #### DESCRIPTION
  Get the Network Logs in HAR (HTTP Archive) format for the session executed on the BrowserStack's real devices
@@ -573,7 +588,7 @@ $ browserstack app-automate appium debug network-logs [flags]
 <br>
 <br>
 
-## $ browserstack app-automate appium debug appium-logs 
+## browserstack app-automate appium debug appium-logs 
   
  #### DESCRIPTION
  Get the Logs for your Appium Sessions executed on the BrowserStack's real devices
@@ -595,7 +610,7 @@ $ browserstack app-automate appium debug appium-logs [flags]
 ## RUN ESPRESSO TESTS ON BROWSERSTACK
 Run your Espresso tests on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You can run your Espresso tests via the CLI using the following set of commands:
 
-## $ browserstack app-automate espresso
+## browserstack app-automate espresso
  
  #### DESCRIPTION
  BrowserStack supports Espresso automated mobile app tests using Java , and running your tests on our cloud setup of Real Devices
@@ -612,7 +627,7 @@ $ browserstack app-automate espresso [command]
  <br>
  <br>
   
-## $ browserstack app-automate espresso run
+## browserstack app-automate espresso run
  
  #### DESCRIPTION
  Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso) using the required flags `app`, `testSuite`, `device`
@@ -651,7 +666,6 @@ $ browserstack app-automate espresso run --app "app-debug.apk" --testSuite "app-
 ## RUN XCUITEST ON BROWSERSTACK
 Run your XCUITests for iOS on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You can run your XCUITest via the CLI using the following set of commands:
 
-## $ browserstack app-automate xcuitest
 
  #### DESCRIPTION
 BrowserStack supports XCUITest framework for iOS mobile app testing, and running your tests on our cloud setup is simple and straightforward.
@@ -667,7 +681,7 @@ $ browserstack app-automate xcuitest [command]
  <br>
  <br>
  
- ## $ browserstack app-automate xcuitest run
+ ## browserstack app-automate xcuitest run
  
  #### DESCRIPTION
  Run your [XCUITests on BrowserStack](https://www.browserstack.com/app-automate/xcuitest/get-started) using the required flags `app`, `testSuite`, `device`. The test suite needs to be a zip file.

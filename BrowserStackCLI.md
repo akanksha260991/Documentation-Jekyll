@@ -76,7 +76,7 @@ $ ./browserstack authenticate --username=your_username --access-key=your_access_
 <br>
 
 ## App Automate
-Run your automated Mobile app tests on the real mobile devices offeref by BrowserStack. We currently support Appium, Espresso, XCUITest and EarlGrey automation frameworks.
+Run your automated Mobile app tests on the real mobile devices offeref by BrowserStack. We currently support Appium, Espresso and XCUITest automation frameworks.
 
 #### USAGE
 ```
@@ -86,7 +86,7 @@ $ ./browserstack app-automate [commands] [flags]
  #### COMMANDS
 ```
   apps                Manage your uploaded mobile apps on BrowserStack
-  testsuite           Manage your TestSuite for different Frameworks (Espresso/XCUITest/EarlGrey)
+  testsuite           Manage your TestSuite for different Frameworks (Espresso/XCUITest)
   espresso            Run your Espresso mobile app tests
   xcuitest            Run your XCUITest mobile app tests
   appium              View and manage your appium tests executed on BrowserStack's real devices.
@@ -247,7 +247,7 @@ $ browserstack app-automate testsuite upload [flags]
 ```
   -p, --path          [*] Local path of test suite
   -u, --url           [*] Public URL of test suite
-  -f, --framework     [*] test suite framework. Values: espresso/xcuitest/earlgrey
+  -f, --framework     [*] test suite framework. Values: espresso/xcuitest
       --custom_id     Set a custom_id to uploaded test suite. It allows to upload multiple apps under same name
   -h, --help          help for upload
 ```
@@ -276,19 +276,19 @@ Delete a test-suite using the required flag `testsuite`. The `testsuite` is the 
  
 #### USAGE
 ```
-$ browserstack app-automate testsuite delete [flags]
+$ ./browserstack app-automate testsuite delete [flags]
 ```
 
 #### FLAGS
 ```
-  -f, --framework       [*] test suite framework. Values: espresso/xcuitest/earlgrey
+  -f, --framework       [*] test suite framework. Values: espresso/xcuitest
       --testsuite       [*] test_url (bs://...) of the uploaded test on the BrowserStack servers
   -h, --help                help for delete
 ```
 
 #### Example
 ```bash
-$ /browserstack app-automate testsuite delete --testsuite="bs://f946e972e7d0cdd394ada763f13ab14628a1b5fd" --framework "espresso"
+$ ./browserstack app-automate testsuite delete --testsuite="bs://f946e972e7d0cdd394ada763f13ab14628a1b5fd" --framework "espresso"
 ```
 <br>
 <br>
@@ -303,7 +303,7 @@ $ ./browserstack app-automate testsuite list [flags]
 
 ### FLAGS
 ```
-  -f, --framework       [*] test suite framework. Values: espresso/xcuitest/earlgrey
+  -f, --framework       [*] test suite framework. Values: espresso/xcuitest
   -h, --help            help for list
 ```
 
@@ -379,7 +379,8 @@ b. View all the devices (in Tabular format) supported on BrowserStack:
 $ ./browserstack app-automate devices -t
 ```
  
-> **Note:** The first column of the command output, `DEVICE`, contains the name of the devices that you can use later to run tests on a specific model. The `OS_VERSION` column lists the operating system versions supported by that device. You need to specify both the `DEVICE` and `OS_VERSION` for running tests on BrowserStack.
+> **Note:** The first column of the command output, `DEVICE`, contains the name of the devices that you can use later to run tests on a specific model. The `OS_VERSION` column lists the operating system versions supported by that device. 
+You need to specify both the `DEVICE` and `OS_VERSION` for running tests on BrowserStack.
 <br>
 <br>
 
@@ -415,7 +416,7 @@ Run your Appium test scripts on BrowserStack [App Automate](https://www.browsers
 
 #### USAGE
 ```
-$ ./browserstack app-automate appium [commands]
+$ ./browserstack app-automate appium [commands] [flags]
 ```
 
 #### COMMANDS
@@ -428,9 +429,8 @@ $ ./browserstack app-automate appium [commands]
 <br>
 <br>
 
-## List the projects
-View and manage all the projects associated with your account. Projects are organizational structures for builds executed on BrowserStack. 
-
+### View and manage the projects
+Projects are organizational structures for builds executed on BrowserStack. Fetch the list of all the projects and manage them.
 #### USAGE
 ```
 $ browserstack app-automate appium projects [command]
@@ -445,65 +445,122 @@ delete                   Delete a project
 <br>
 <br>
 
-## browserstack app-automate appium projects list
-
- #### DESCRIPTION
- List all the recent projects of your account. Once the list of projects is available, more specific information about a specific project can be queried using project ID.
+### View the list of projects
+List all the recent projects of your account. Once the list of projects is available, more specific information about a specific project can be queried using project ID.
  
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium projects list
+$ ./browserstack app-automate appium projects list
+```
+
+#### Sample Response
+```bash
+[
+  {
+    "created_at": "2020-03-03T08:22:42.000Z",
+    "group_id": 2,
+    "id": 124114,
+    "name": "RunSampleTests",
+    "sub_group_id": 0,
+    "updated_at": "2020-03-03T16:44:22.000Z",
+    "user_id": 3934023
+   },
+  {
+    "created_at": "2020-03-03T11:01:54.000Z",
+    "group_id": 2,
+    "id": 124133,
+    "name": "RunLocalTest",
+    "sub_group_id": 0,
+    "updated_at": "2020-03-03T11:01:54.000Z",
+    "user_id": 788534
+  }
+  ....
+]
 ```
 <br>
 <br>
 
-## browserstack app-automate appium projects info
-
- #### DESCRIPTION
- Get info about a project of your account using the required flag `Project ID`.
+### Get project info
+Get info about a project of your account using the required flag `Project ID`.
  
-  #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium projects info [flags]
+$ ./browserstack app-automate appium projects info [flags]
 ```
 
- #### FLAGS
+#### FLAGS
+```
+-p, --project-id=project-id        [*] Project ID
+```
+
+#### Example
+```bash
+ ./browserstack app-automate appium projects info --project-id=124133
+```
+
+#### Sample Response
+```bash
+ {
+  "project": {
+    "builds": [
+      {
+        "automation_project_id": 124133,
+        "created_at": "2020-03-03T11:01:54.000Z",
+        "delta": true,
+        "duration": 122,
+        "framework": "appium",
+        "group_id": 2,
+        "hashed_id": "a0aa593ce24797665cad15d00b3dca8fc278f50c",
+        "id": 844509,
+        "name": "Appium Sample Test",
+        "status": "timeout",
+        "sub_group_id": 0,
+        "tags": null,
+        "test_data": {},
+        "updated_at": "2020-03-03T11:03:56.000Z",
+        "user_id": 788534
+      },
+      {...}
+      ....
+    ],
+    "created_at": "2020-03-03T11:01:54.000Z",
+    "group_id": 2,
+    "id": 124133,
+    "name": "RunSampleTests",
+    "sub_group_id": 0,
+    "updated_at": "2020-03-03T11:01:54.000Z",
+    "user_id": 788534
+  }
+}
+```
+<br>
+<br>
+
+### Delete a project
+Delete a project of your account using the required flag `Project ID`. 
+> Note that to delete a project, it needs to be empty of builds and sessions
+
+#### USAGE
+```
+$ ./browserstack app-automate appium projects delete [flags]
+```
+
+#### FLAGS
 ```
 -p, --project-id=project-id        [*] Project ID
 ```
 <br>
 <br>
 
-## browserstack app-automate appium projects delete
+## View and manage builds
+Builds are organizational structures for tests. Fetch the list of all the builds and manage them. 
  
- #### DESCRIPTION
- Delete a project of your account using the required flag `Project ID`. 
- > Note that to delete a project, it needs to be empty of builds and sessions
-
- 
-  #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium projects delete [flags]
+$ ./browserstack app-automate appium builds [commands] [flags]
 ```
 
- #### FLAGS
-```
--p, --project-id=project-id        [*] Project ID
-```
-<br>
-<br>
-
-## browserstack app-automate appium builds
-
- #### DESCRIPTION
- View and manage all the builds associated with your account. Builds are organizational structures for tests. 
- 
-  #### USAGE
-```
-$ browserstack app-automate appium builds
-```
-
- #### COMMANDS
+#### COMMANDS
 ```
 list                       List the recent builds
 delete                     Delete a build
@@ -512,19 +569,17 @@ session-list               List of all sessions within a build
 <br>
 <br>
 
-## browserstack app-automate appium builds list
-
- #### DESCRIPTION
- List the recent builds of your account.
+### View the list of builds
+List the recent builds of your account.
 
  #### USAGE
 ```
-$ browserstack app-automate appium builds list
+$ ./browserstack app-automate appium builds list
 ```
 <br>
 <br>
 
-## browserstack app-automate appium builds delete
+### Delete a build
 
  #### DESCRIPTION
  Delete a build of your account using the required flag `Build ID`.
@@ -532,7 +587,7 @@ $ browserstack app-automate appium builds list
 
  #### USAGE
 ```
-$ browserstack app-automate appium builds delete [flags]
+$ ./browserstack app-automate appium builds delete [flags]
 ```
 
  #### FLAGS
@@ -542,17 +597,15 @@ $ browserstack app-automate appium builds delete [flags]
 <br>
 <br>
 
-## browserstack app-automate appium builds session-list
+### Get the list of sessions inside a build
+Retrieve a list of sessions under a particular build using the required flag `Build ID`
 
- #### DESCRIPTION
- Retrieve a list of sessions under a particular build using the required flag `Build ID`
-
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium builds session-list
+$ ./browserstack app-automate appium builds session-list
 ```
 
- #### FLAGS
+#### FLAGS
  ```
  -b, --build-id=build-id        [*] Build ID
  ```

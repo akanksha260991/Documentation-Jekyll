@@ -301,7 +301,7 @@ Get the list of uploaded test-suites on Browserstack. The response is presented 
 $ ./browserstack app-automate testsuite list [flags]
 ```
 
-### FLAGS
+#### FLAGS
 ```
   -f, --framework       [*] test suite framework. Values: espresso/xcuitest
   -h, --help            help for list
@@ -378,6 +378,29 @@ b. View all the devices (in Tabular format) supported on BrowserStack:
 ```
 $ ./browserstack app-automate devices -t
 ```
+#### Sample Response
+```
+  +-----------------------------+---------+------------+------------+
+  |           DEVICE            |   OS    | OS VERSION | REALMOBILE |
+  +-----------------------------+---------+------------+------------+
+  |                   iPhone XS |     ios |         13 |       true |
+  |           iPhone 11 Pro Max |     ios |         13 |       true |
+  |               iPhone 11 Pro |     ios |         13 |       true |
+  |                   iPhone 11 |     ios |         13 |       true |
+  |                   iPhone XS |     ios |         12 |       true |
+  |               iPhone XS Max |     ios |         12 |       true |
+  |                   iPhone XR |     ios |         12 |       true |
+  |      Samsung Galaxy S9 Plus | android |        9.0 |       true |
+  |      Samsung Galaxy S8 Plus | android |        9.0 |       true |
+  |         Samsung Galaxy S10e | android |        9.0 |       true |
+  |     Samsung Galaxy S10 Plus | android |        9.0 |       true |
+  |          Samsung Galaxy S10 | android |        9.0 |       true |
+  | Samsung Galaxy Note 10 Plus | android |        9.0 |       true |
+  |      Samsung Galaxy Note 10 | android |        9.0 |       true |
+  |          Samsung Galaxy A10 | android |        9.0 |       true |
+  |       Samsung Galaxy Note 9 | android |        8.1 |       true |
+  |     Samsung Galaxy J7 Prime | android |        8.1 |       true |
+```
  
 > **Note:** The first column of the command output, `DEVICE`, contains the name of the devices that you can use later to run tests on a specific model. The `OS_VERSION` column lists the operating system versions supported by that device. 
 You need to specify both the `DEVICE` and `OS_VERSION` for running tests on BrowserStack.
@@ -385,7 +408,7 @@ You need to specify both the `DEVICE` and `OS_VERSION` for running tests on Brow
 <br>
 
 ## View the plan status
-Get the information about your group's App Automate plan,  including your plan name, maximum number of parallel sessions allowed, the number of parallel sessions currently running and the number of parallel sessions queued.
+Get the information about your group's App Automate plan, including your plan name, maximum number of parallel sessions allowed, the number of parallel sessions currently running and the number of parallel sessions queued.
  
 #### USAGE
 ```
@@ -429,7 +452,7 @@ $ ./browserstack app-automate appium [commands] [flags]
 <br>
 <br>
 
-### View and manage the projects
+## View and manage the projects
 Projects are organizational structures for builds executed on BrowserStack. Fetch the list of all the projects and manage them.
 #### USAGE
 ```
@@ -572,28 +595,50 @@ session-list               List of all sessions within a build
 ### View the list of builds
 List the recent builds of your account.
 
- #### USAGE
+#### USAGE
 ```
 $ ./browserstack app-automate appium builds list
 ```
+
+#### Sample Response
+ ```bash
+ [ 
+  {
+     "automation_build": {
+       "duration": 1731351,
+       "hashed_id": "83ba386a86e081e94e3727354839ea89ed928214",
+       "name": "Mobile OPS",
+       "status": "failed"
+     }
+   },
+   {
+     "automation_build": {
+       "duration": 8992929,
+       "hashed_id": "da09a401ee0750d8b4d7701475e2929b160dbf65",
+       "name": "Hitesh - Android",
+       "status": "failed"
+     }
+   }
+   ...
+   ..
+ ]
+ ```
 <br>
 <br>
 
 ### Delete a build
+Delete a build of your account using the required flag `Build ID`.
+> Note: Deleting a build will delete all the sessions contained within it.
 
- #### DESCRIPTION
- Delete a build of your account using the required flag `Build ID`.
- > Note that deleting a build will delete all the sessions contained within it.
-
- #### USAGE
+#### USAGE
 ```
 $ ./browserstack app-automate appium builds delete [flags]
 ```
 
- #### FLAGS
- ```
+#### FLAGS
+```
  -b, --build-id=build-id       [*] Build ID
- ```
+```
 <br>
 <br>
 
@@ -602,29 +647,97 @@ Retrieve a list of sessions under a particular build using the required flag `Bu
 
 #### USAGE
 ```
-$ ./browserstack app-automate appium builds session-list
+$ ./browserstack app-automate appium builds sessions-list [flags]
 ```
 
 #### FLAGS
  ```
  -b, --build-id=build-id        [*] Build ID
  ```
-<br>
-<br>
-<br>
 
-## browserstack app-automate appium sessions
-
-#### DESCRIPTION
- View and Manage all the sessions associated with your builds
-
- #### USAGE
+#### Example
 ```
-$ browserstack app-automate appium sessions [command]
+ ./browserstack app-automate appium builds sessions-list --build-id=83ba386a86e081e94e3727354839ea89ed928214
 ```
 
- #### COMMANDS
- ```
+#### Sample Response
+```bash
+ [
+  {
+    "automation_session": {
+      "app_details": {
+        "app_custom_id": null,
+        "app_name": "org.wikipedia.alpha",
+        "app_url": "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c",
+        "app_version": "2.5.194-alpha-2017-05-30",
+        "uploaded_at": "2019-09-25T10:02:11.000Z"
+      },
+      "appium_logs_url": "https://api.browserstack.com/app-automate/builds/.......",
+      "browser": null,
+      "browser_url": "https://app-automate.browserstack.com/builds.......",
+      "browser_version": "app",
+      "build_name": "Mobile OPS",
+      "device": "Google Pixel 4",
+      "device_logs_url": "https://api.browserstack.com/app-automate/builds/.../sessions/.../devicelogs",
+      "duration": 38,
+      "hashed_id": "379f2d097119cce908ed71ce6bd862ebedb4e0c0",
+      "logs": "https://app-automate.browserstack.com/builds/.../sessions/.../logs",
+      "name": "Pixel 4 Play Store Login",
+      "os": "android",
+      "os_version": "10.0",
+      "project_name": "Untitled Project",
+      "public_url": "https://app-automate.browserstack.com/builds/.../sessions/...?auth_token=...",
+      "reason": "start-error",
+      "status": "error",
+      "video_url": "https://app-automate.browserstack.com......."
+    }
+  },
+  {
+    "automation_session": {
+      "app_details": {
+        "app_custom_id": null,
+        "app_name": "org.wikipedia.alpha",
+        "app_url": "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c",
+        "app_version": "2.5.194-alpha-2017-05-30",
+        "uploaded_at": "2019-09-25T10:02:11.000Z"
+      },
+      "appium_logs_url": "https://api.browserstack.com/app-automate/builds/.../sessions/.../appiumlogs",
+      "browser": null,
+      "browser_url": "https://app-automate.browserstack.com/builds/.../sessions/...",
+      "browser_version": "app",
+      "build_name": "Mobile OPS",
+      "device": "Google Pixel 4",
+      "device_logs_url": "https://api.browserstack.com/app-automate/builds/.../sessions/.../devicelogs",
+      "duration": 39,
+      "hashed_id": "21366a38df449d17b2eacf72d240a6cd4cfca9a7",
+      "logs": "https://app-automate.browserstack.com/builds/.../sessions/.../logs",
+      "name": "Pixel 4 Play Store Login",
+      "os": "android",
+      "os_version": "10.0",
+      "project_name": "Untitled Project",
+      "public_url": "https://app-automate.browserstack.com/builds/.../sessions/...?auth_token=...",
+      "reason": "start-error",
+      "status": "error",
+      "video_url": "https://app-automate.browserstack.com/....."
+    }
+  },
+  ...
+]
+```
+<br>
+<br>
+<br>
+
+## View and manage sessions
+Session is one device execution on BrowserStack. Fetch all the sessions associated with your different builds.
+
+#### USAGE
+```
+$ ./browserstack app-automate appium sessions [command] [flags]
+```
+
+#### COMMANDS
+```
 info                  Get info of a session
 api-status            Mark your session/test as Passed/Failed. You can also pass a reason for failure if required
 delete                Delete a session
@@ -632,62 +745,78 @@ delete                Delete a session
 <br>
 <br>
 
-## browserstack app-automate appium sessions info
+### Get session info
+Once the list of sessions is available, more specific information about a particular session can be queried by using the required flag `Session ID`
 
-#### DESCRIPTION
- Once the list of sessions is available, more specific information about a particular session can be queried by using the required flag `Session ID`
-
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium sessions info [flags]
+$ ./browserstack app-automate appium sessions info [flags]
 ```
 
- #### FLAGS
- ```
+#### FLAGS
+```
 -s,  --session-id=session-id   [*] Session ID
  ```
 <br>
 <br>
 
-## browserstack app-automate appium sessions set-status
+## Set status for a session
+Mark your Appium sessions as Passed/Failed. The required flags are `Session ID` and `Status`. Also `reason`(optional) for failure can be specified e.g "Element Not Found"
 
- #### DESCRIPTION
- Mark your Appium sessions as Passed/Failed. The required flags are `Session ID` and `Status`. Also `reason`(optional) for failure can be specified e.g "Element Not Found"
-
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate appium sessions info [flags]
+$ ./browserstack app-automate appium sessions set-status [flags]
 ```
 
- #### FLAGS
- ```
--s, --session-id=session-id        [*] Session ID
-     --status=status                [*] Set the status as Passed/Failed. Values: Passed/Failed
-     --reason=reason                    Pass a reason for the failure
- ```
-<br>
-<br>
-<br>
-<br>
-
-## DEBUG - APPIUM TESTS
-You can debug your Appium script executions on BrowserStacks using range of debugging options available. List of command to debug and fetch logs via CLI are:
-
-## browserstack app-automate appium debug
-
- #### DESCRIPTION
- Range of debugging tools provided by BrowserStack to easily debug your test automation for mobile apps
-
- #### USAGE
+#### FLAGS
+```  
+  -s, --session-id     [*] Session ID.
+      --status         [*] Set the status as passed/failed
+      --reason             Pass a reason for the failure/success
 ```
-$ browserstack app-automate appium debug [command]
+
+#### Example
 ```
- #### COMMANDS
- ```
-text-logs               Session Logs in text format
-device-logs             Device Logs of your session execution
-appium-logs             Appium Logs of your session execution
-network-logs            Session Logs in HAR (HTTP Archive) format
+ ./browserstack app-automate appium sessions set-status --session-id=379f2d097119cce908ed71ce6bd862ebedb4e0c0 --status="passed" --reason="Assertion failed"
+```
+
+#### Sample Response
+```bash
+  {
+   "automation_session": {
+     "browser": null,
+     "browser_version": "app",
+     "build_name": "Mobile OPS",
+     "device": "Google Pixel 4",
+     "duration": 38,
+     "hashed_id": "379f2d097119cce908ed71ce6bd862ebedb4e0c0",
+     "name": "Pixel 4 Play Store Login",
+     "os": "android",
+     "os_version": "10.0",
+     "project_name": "Untitled Project",
+     "reason": "Assertion failed",
+     "status": "passed"
+    }
+  }
+```
+<br>
+<br>
+
+
+## Debug your Appium tests
+You can debug your Appium script executions on BrowserStacks using range of debugging options available. 
+
+#### USAGE
+```
+$ ./browserstack app-automate appium debug [commands] [flags]
+```
+
+#### COMMANDS
+```
+   text-logs    Session Logs in text format.
+   device-logs  Device Logs of your session execution.
+   appium-logs  Appium Logs of your session execution.
+   network-logs Network Logs in HAR (HTTP Archive) format
  ```
 <br>
 <br>

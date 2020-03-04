@@ -416,8 +416,6 @@ $ ./browserstack app-automate plan-status
 ```
 
 #### Sample Response
- The output will be in JSON format: 
-
 ```bash
  {
   "automate_plan": "App Automate",
@@ -1012,9 +1010,6 @@ $ ./browserstack app-automate appium debug appium-logs [flags]
 ```
 <br>
 <br>
-<br>
-
-
 
 ## Test your Espresso builds
 BrowserStack supports Espresso automated mobile app tests using Java , and running your tests on our cloud setup of Real Devices
@@ -1032,7 +1027,6 @@ $ ./browserstack app-automate espresso [command] [flags]
  sessions    Get the details of your test sessions
  debug       Debug the Espresso tests
 ```
- <br>
  <br>
   
 ### Execute your Espresso build
@@ -1095,7 +1089,6 @@ $ ./browserstack app-automate espresso run --app="bs://ca57ff53abc947d571e77c613
   "message": "Success"
  }
 ```
-<br>
 <br>
 
 ### View the builds in a project
@@ -1196,7 +1189,6 @@ $ ./browserstack app-automate espresso projects [flags]
 }
 ```
 <br>
-<br>
 
 ### Get the build summary
 View the overall status of your build execution and its summary e.g. app details, device executions in the build, test status on each device etc. Make use of the `Build ID` to fetch the build summary.
@@ -1283,6 +1275,7 @@ $ ./browserstack app-automate espresso builds [flags]
   }
 }
 ```
+<br>
 
 ### View device executions for your build
 View the overall status of your build execution and device executions in the build. Also, view the JUnit report for each device execution.
@@ -1297,6 +1290,7 @@ $ ./browserstack app-automate espresso sessions [flags]
   info                Get the info about the sessions executions on device
   junit-report        Access test reports in the standard JUnit XML format. Reports available for each session inside a build
 ```
+<br>
 
 ### Get info about a device execution of a build
 View the executions details of all the test cases(in your test-suite) on a device.
@@ -1398,7 +1392,6 @@ $ ./browserstack app-automate espresso sessions info [flags]
 }
 ```
 <br>
-<br>
 
 ### Get the JUnit report in XML format
 View the executions details of all the test cases(in your test-suite) on a device in the XML format
@@ -1446,6 +1439,8 @@ $ ./browserstack app-automate espresso sessions junit-report [flags]
   at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
   ....
 ```
+<br>
+<br>
 
 ## Debug your Espresso builds
 You can debug your Espresso builds on BrowserStack using the range of debugging options available. 
@@ -1461,7 +1456,6 @@ $ ./browserstack app-automate espresso debug [commands] [flags]
  device-logs           Get the device logs
  app-profiling         Device Logs of your session execution
 ```
-<br>
 <br>
 
 ### Debug - Network logs
@@ -1497,7 +1491,6 @@ $ ./browserstack app-automate espresso debug network-logs [flags]
    }
  }
 ```
-<br>
 <br>
 
 ### Debug - Device Logs
@@ -1535,8 +1528,6 @@ $ ./browserstack app-automate espresso debug device-logs [flags]
    03-04 12:51:07.923 I/MonitoringInstr( 5306): Setting context classloader to 'dalvik.system.PathClassLoader[DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/base.apk", zip file "/data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/base.apk"],nativeLibraryDirectories=[/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/lib/arm64, /data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/lib/arm64, /system/lib64, /vendor/lib64]]]', Original: 'dalvik.system.PathClassLoader[DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/base.apk", zip file "/data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/base.apk"],nativeLibraryDirectories=[/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/lib/arm64, /data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/lib/arm64, /system/lib64, /vendor/lib64]]]'
 ```
 <br>
-<br>
-
 
 ### Debug - App profiling
 The profiling logs help to identify where your app is making inefficient use of resources, such as the CPU, memory etc. Also, you can inspect the network traffic and helps you optimize the underlying code.
@@ -1587,8 +1578,8 @@ $ ./browserstack app-automate espresso debug app-profiling [flags]
  ]
 
 ```
-
-
+<br>
+<br>
 
 ## Test your XCUITest builds
 BrowserStack supports XCUITest framework for iOS mobile app testing, and running your tests on our cloud setup is simple and straightforward.

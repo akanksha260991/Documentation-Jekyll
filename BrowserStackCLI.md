@@ -994,8 +994,8 @@ $ ./browserstack app-automate appium debug appium-logs [flags]
 
 #### Sample Response
 ```bash
- 2020-03-04 09:58:38:322 - [Appium] Creating new AndroidUiautomator2Driver (v0.5.2) session
- 2020-03-04 09:58:38:322 - [Appium] Capabilities:
+ 2020-03-04 09:58:38:322 - [Appium]   Creating new AndroidUiautomator2Driver (v0.5.2) session
+ 2020-03-04 09:58:38:322 - [Appium]   Capabilities:
  2020-03-04 09:58:38:323 - [Appium]   device: 'google pixel'
  2020-03-04 09:58:38:323 - [Appium]   osVersion: '7.1'
  2020-03-04 09:58:38:324 - [Appium]   platformName: 'Android'
@@ -1021,62 +1021,96 @@ BrowserStack supports Espresso automated mobile app tests using Java , and runni
 
 #### USAGE
 ```
-$ ./browserstack app-automate espresso [commands] [flags]
+$ ./browserstack app-automate espresso [command] [flags]
 ```
 
- #### COMMANDS
- ```
- run                     Execute your Espresso tests on Browserstack's Real Devices
- ```
+#### COMMANDS
+```
+ run         Execute your Espresso tests on BrowserStack real devices
+ projects    List all builds associated with a project (grouped using project parameter while execution)
+ builds      Get the status of your test execution or fetch the summary of your build
+ sessions    Get the details of your test sessions
+ debug       Debug the Espresso tests
+```
  <br>
  <br>
   
-## browserstack app-automate espresso run
+### Execute your Espresso build
  
- #### DESCRIPTION
- Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso) using the required flags `app`, `testSuite`, `device`
+#### DESCRIPTION
+Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso) using the required flags `app`, `testSuite`, `device`
 
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate espresso run [flags]
+$ ./browserstack app-automate espresso run [flags]
 ```
  #### FLAGS
 ```
-     --app                     [*] Local path of app or app_url(bs://<hashed_id>) of app uploaded on BrowserStack
-     --testSuite               [*] Local path of test app or test_url(bs://<hashed_id>) of app uploaded on the BrowserStack
- -d, --device                  [*] Device name. Format: devicename-os_version. Values: -d = Google Nexus 6-6.0.
-     --projectname                 Set project name to group your test executions under one build
-     --devicelogs                  Device Logs for your tests. Value: true/false
-     --numShards                   Break test cases into shards
-     --shardIndex                  Specify the shard number to run a specific shard. Values: 0 to (numShards-1)
-     --local                       Enable local testing. Value: true/false (Default Value = false)
-     --video                       Enable/Disable the video of the test run. Value: true/false (Default Value = true) 
-     --orientation                 Change screen orientation of mobile. Value: portrait/landscape (Default Value = portrait)
-     --help
+  -a, --app                     [*] Local path / Public url to .apk OR app_url(bs://<hashed_id>) of app uploaded on BrowserStack
+  -t, --testSuite               [*] Local path / Public url to test .apk OR test_url(bs://<hashed_id>) of test uploaded on BrowserStack
+  -d, --devices                 [*] Device(s) name. Multiple Values allowed. Format: "device_name-os_version". Ex: "Google Nexus 6-6.0,OnePlus 7-9.0"
+      --project                 Group your test executions under one build. Ex: "LoginTest"
+      --projectNotifyURL        Notify url for projects where we can send a confirmation once execution of all the builds under the project are completed
+      --numShards               Number of shards to divide your test suite. Use shardIndex flag along with this
+      --shardIndex              Specify the shard number to run a specific shard. Format: 0 to (numShards-1)
+      --class                   Test only some selected classes. Ex: "com.browserstack.class1,com.browserstack.class2"
+      --package                 Test only some selected packages. Ex: "com.browserstack,com.browserstack1"
+      --enableSpoonFramework    Capture the screenshots of your tests using the Spoon framework. Values: "true/false". (Default: false)
+      --video                   Enable the video of the test run. Values: "true/false". Default: true
+      --deviceLogs              Enable the device logs. Values: true/false
+      --otherApps               Install apps in addition to the main app. Ex: "bs://hashed-id-1, bs://hashed-id-2"
+      --uploadMedia             Test uploaded images/videos. Upload media using REST API and use the hashed url returned. Ex: "media://hashedid-1, media://hashedid-2"
+      --locale                  Change the locale to test localization of your App. Ex: "fr"
+      --language                Change the language to test localization of your App. Ex: "fr"
+      --geoLocation             Test how your app behaves in specific countries. Ex: "US"
+      --gpsLocation             Simulate the location of the device to a particular GPS location. Ex: "40.730610,-73.935242"
+      --deviceOrientation       Change screen orientation of mobile device. Value: "landscape/portrait". Default: Portrait
+      --callbackURL             Receive a confirmation once your test execution is completed on this url
+      --annotation              Run tests only for particular annotations. Ex: "P1, P2"
+      --size                    Run tests that have @SmallTest, @MediumTest and @LargeTest annotations. Ex: "SmallTest, MediumTest"
+      --timezone                Configure tests to run on a custom time zone. Ex: "UTC" or "New_York" etc
+      --local                   Enable local testing. Ex: "false". (Default: false)
+      --localIdentifier         If you are using same account to test multiple applications, you can setup named connection using the localIdentifier option. Ex: "Test123"
+      --appStoreConfiguration   Login to your google account on the devices in order to test the functionalities like Google Pay. Format: "{"username": "play-store-email", "password": "play-store-password"}"
+      --disableAnimations       Disable animations on the device. Values: "true/false"
+      --allowDeviceMockServer   Set to 'true' if you are using Mock server. Local, NetworkLogs, IP geoLocation will not work if you enable this capability
+      --networkLogs             Set this parameter if you want to enable the Network Logs. By default it's false.
+      --networkProfile          Simulate different network conditions from the list of existing network profiles. Ex: "2g-gprs-good"
+      --customNetwork           Simulate the custom network conditions. Format: "download speed (kbps), upload speed (kbps), latency (ms), packet loss (%)" . Ex: "1000,1000,100,1"
+  -h, --help                    help for run
  ```
-> Note: In order to shard your tests, both `numShards` and `shardIndex` are required flags. E.g To break test cases into four shards and run only the first shard the flag values will be --numShards 4 and --shardIndex 0
+> Note: For executing the test in multiple devices, use the `device` flag multiple times.
+<br>
 <br>
 
-> Note: For executing the test in multiple devices, use the `device` flag multiple times.
-
- #### Example
+#### Example
 ```bash
-$ browserstack app-automate espresso run --app "app-debug.apk" --testSuite "app-debug-Test.apk" --device "Google Nexus 6-6.0" --device "Samsung Galaxy S9-8.0" --projectname "MyEspressoTest" --numShard 4 --shardIndex 0
+# Run build using the local path in `app` and `testSuite`
+$ ./browserstack app-automate espresso run --app="/Users/steve/Desktop/Execute/Espresso/app-debug.apk" --testSuite="/Users/steve/Desktop/Execute/Espresso/app-debug-androidTest.apk" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest" --numShards=4 --shardIndex=0
+
+
+# Run build using the app_url and test_url in `app` and `testSuite`
+$ ./browserstack app-automate espresso run --app="bs://ca57ff53abc947d571e77c613d08cb7753bb9fad" --testSuite="bs://c8d72e7be2b0b0174b9cf492187dc549708540bc" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest" --numShards=4 --shardIndex=0
+```
+
+#### Sample Response
+```bash
+ {
+  "build_id": "43d43117159595ec41a018776f26e6679f3f223c",
+  "message": "Success"
+ }
 ```
 <br>
 <br>
 <br>
 
-## RUN XCUITEST ON BROWSERSTACK
-Run your XCUITests for iOS on BrowserStack [App Automate](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You can run your XCUITest via the CLI using the following set of commands:
 
-
- #### DESCRIPTION
+## Test your XCUITest builds
 BrowserStack supports XCUITest framework for iOS mobile app testing, and running your tests on our cloud setup is simple and straightforward.
  
- #### USAGE
+#### USAGE
 ```
-$ browserstack app-automate xcuitest [command]
+$ ./browserstack app-automate xcuitest [command] [flags]
 ```
 #### COMMANDS
  ```

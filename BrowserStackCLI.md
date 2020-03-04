@@ -1036,9 +1036,7 @@ $ ./browserstack app-automate espresso [command] [flags]
  <br>
   
 ### Execute your Espresso build
- 
-#### DESCRIPTION
-Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso) using the required flags `app`, `testSuite`, `device`
+Run your [Espresso Tests on BrowserStack](https://www.browserstack.com/app-automate/rest-api?framework=espresso). You need to pass the `app`, `testSuite` along with the `devices` on which you want to run your Espresso build.
 
 #### USAGE
 ```
@@ -1286,7 +1284,7 @@ $ ./browserstack app-automate espresso builds [flags]
 }
 ```
 
-### View details about device executions for your build
+### View device executions for your build
 View the overall status of your build execution and device executions in the build. Also, view the JUnit report for each device execution.
 
 #### USAGE
@@ -1300,7 +1298,7 @@ $ ./browserstack app-automate espresso sessions [flags]
   junit-report        Access test reports in the standard JUnit XML format. Reports available for each session inside a build
 ```
 
-### Get info about a device execution(inside a build)
+### Get info about a device execution of a build
 View the executions details of all the test cases(in your test-suite) on a device.
 > Note: Each device execution is regarded as a session
 

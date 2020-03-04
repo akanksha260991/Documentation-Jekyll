@@ -760,7 +760,7 @@ $ ./browserstack app-automate appium sessions info [flags]
 <br>
 <br>
 
-## Set status for a session
+### Set status for a session
 Mark your Appium sessions as Passed/Failed. The required flags are `Session ID` and `Status`. Also `reason`(optional) for failure can be specified e.g "Element Not Found"
 
 #### USAGE
@@ -813,34 +813,46 @@ $ ./browserstack app-automate appium debug [commands] [flags]
 
 #### COMMANDS
 ```
-   text-logs    Session Logs in text format.
-   device-logs  Device Logs of your session execution.
-   appium-logs  Appium Logs of your session execution.
-   network-logs Network Logs in HAR (HTTP Archive) format
- ```
+ text-logs         Session Logs in text format.
+ device-logs       Device Logs of your session execution.
+ appium-logs       Appium Logs of your session execution.
+ network-logs      Network Logs in HAR (HTTP Archive) format
+```
 <br>
 <br>
 
-## browserstack app-automate appium debug text-logs 
-  
- #### DESCRIPTION
- Get the logs for all your requests and responses for the session executed on BrowserStack's real devices
+### Debug - Text logs
+Get the logs for all your requests and responses for the session executed on BrowserStack's real devices
 
- #### USAGE
+#### USAGE
 ```
 $ browserstack app-automate appium debug text-logs  [flags]
 ```
- 
- #### FLAGS
- ```
+
+#### FLAGS
+```
 -b, --build-id=build-id        [*] Build ID 
 -s, --session-id=session-id    [*] Session ID
- ```
+```
   
-  #### Example
- ```bash
+#### Example
+```bash
  $ browserstack app-automate appium debug text-logs --build-id "8a46fdeb1dfssdd11a168292ac0925be06yy19e8" --session-id "e015915c695bn76dcbbebc26d566t489916e53ae"
  ```
+ 
+ #### Sample Response
+```bash
+   2020-3-4 9:23:35:394 SESSION_SETUP_TIME {"initialising_device":6134}
+   2020-3-4 9:23:35:394 SESSION_SETUP_TIME  {"downloading_app":892,"installing_app":26344,"setting_up_appium":5441,"setting_up_network_connection":4189}
+   2020-3-4 9:23:47:423 SESSION_SETUP_TIME {"launching_app":12029}
+   2020-3-4 9:23:47:429 REQUEST [2020-3-4 9:23:47:429] POST /session {"desiredCapabilities":{"build":"Appium Sample","name":"single_test","device":"Google Pixel","osVersion":"7.1","platformName":"android","browserstack.debug":true,"browserstack.networkLogs":true,"app":"sample_app","acceptSslCert":false,"detected_language":"appium/ruby_lib_core/3.5.0 (selenium/3.141.0 (ruby macosx))"}}
+   2020-3-4 9:23:47:429 START_SESSION
+   2020-3-4 9:23:47:429 REQUEST [2020-3-4 9:23:47:430] GET /session/bf6379b137d93539b516beb07a0fa50be731cb03
+   2020-3-4 9:23:47:430 RESPONSE {"status":0,"value":{"device":"google pixel","osVersion":"7.1","platformName":"Android","browserstack.debug":"true","browserstack.networkLogs":"true","acceptSslCert":true........"chromeOptions":{"w3c":false},"browserstack.minOSVersion":"4.1","appPackage":"org.wikipedia.alpha","appActivity":"org.wikipedia.main.MainActivity","bundleID":"org.wikipedia.alpha","browserstack.deviceLogs":"true","nativeWebScreenshot":true,"version":"","mobile": {"browser":"mobile","version":"Google Pixel-7.1"},
+ ....
+ ...
+
+```
 <br>
 <br>
 

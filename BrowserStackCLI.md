@@ -973,7 +973,7 @@ $ ./browserstack app-automate appium debug network-logs [flags]
 <br>
 <br>
 
-## Debug - Appium logs 
+### Debug - Appium logs 
 Get the Logs for your Appium Sessions executed on the BrowserStack's real devices
 
 #### USAGE
@@ -1079,18 +1079,15 @@ $ ./browserstack app-automate espresso run [flags]
       --customNetwork           Simulate the custom network conditions. Format: "download speed (kbps), upload speed (kbps), latency (ms), packet loss (%)" . Ex: "1000,1000,100,1"
   -h, --help                    help for run
  ```
-> Note: For executing the test in multiple devices, use the `device` flag multiple times.
-<br>
-<br>
 
 #### Example
 ```bash
-# Run build using the local path in `app` and `testSuite`
-$ ./browserstack app-automate espresso run --app="/Users/steve/Desktop/Execute/Espresso/app-debug.apk" --testSuite="/Users/steve/Desktop/Execute/Espresso/app-debug-androidTest.apk" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest" --numShards=4 --shardIndex=0
+# Execute build using the local path in `app` and `testSuite`
+$ ./browserstack app-automate espresso run --app="/Users/steve/Desktop/Execute/Espresso/app-debug.apk" --testSuite="/Users/steve/Desktop/Execute/Espresso/app-debug-androidTest.apk" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest"
 
 
-# Run build using the app_url and test_url in `app` and `testSuite`
-$ ./browserstack app-automate espresso run --app="bs://ca57ff53abc947d571e77c613d08cb7753bb9fad" --testSuite="bs://c8d72e7be2b0b0174b9cf492187dc549708540bc" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest" --numShards=4 --shardIndex=0
+# Execute build using the app_url and test_url in `app` and `testSuite`
+$ ./browserstack app-automate espresso run --app="bs://ca57ff53abc947d571e77c613d08cb7753bb9fad" --testSuite="bs://c8d72e7be2b0b0174b9cf492187dc549708540bc" --devices="Samsung Galaxy S9-8.0, Google Pixel-7.1" --project="MyEspressoTest"
 ```
 
 #### Sample Response
@@ -1102,7 +1099,497 @@ $ ./browserstack app-automate espresso run --app="bs://ca57ff53abc947d571e77c613
 ```
 <br>
 <br>
+
+### View the builds in a project
+You can group all the builds under the same project using the `project` parameter while executing the build. Use the command below to fecth all the builds under a project.
+ 
+#### USAGE
+```
+$ ./browserstack app-automate espresso projects [flags]
+```
+
+#### FLAGS
+```
+      --project     [*] Project Name specified to group your builds
+  -h, --help            help for project
+```
+
+#### Example
+```bash
+ ./browserstack app-automate espresso projects --project="SampleEspresso"
+```
+
+#### Sample Response
+```bash
+{
+  "builds":  [
+    {
+      "app_details": {
+        "bundle_id": "com.example.tipcalculator",
+        "custom_id": null,
+        "name": "app-debug.apk",
+        "url": "bs://7115de2070fe63b213f8be8a91fc0225d2eb8eb0",
+        "version": "1.0"
+      },
+      "build_id": "69697232ccf53b65c6ebc8a911aad3bde062823f",
+      "device_statuses": {
+        "error": {},
+        "success": {
+          "Google Pixel 3,10.0": "Success",
+          "Samsung Galaxy S8,7.0": "Success"
+        }
+      },
+      "devices": {
+        "Google Pixel 3-10.0": {
+          "session_details": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/...",
+          "session_id": "c947477dba4eabbf3e226640591f1b364cd87dd2",
+          "status": "done",
+          "test_report": "https://app-automate.browserstack.com/...",
+          "test_status": {
+            "FAILED": 2,
+            "IGNORED": 0,
+            "SUCCESS": 2,
+            "TIMEDOUT": 0
+          }
+        },
+        "Samsung Galaxy S8-7.0": {
+          "session_details": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/7a0b613a9dd91a35398c71eee2cfebc44744fd03",
+          "session_id": "7a0b613a9dd91a35398c71eee2cfebc44744fd03",
+          "status": "done",
+          "test_report": "https://app-automate.browserstack.com/...",
+          "test_status": {
+            "FAILED": 2,
+            "IGNORED": 0,
+            "SUCCESS": 2,
+            "TIMEDOUT": 0
+          }
+        }
+      },
+      "duration": "127 seconds",
+      "framework": "espresso",
+      "input_capabilities": {
+        "app": "bs://7115de2070fe63b213f8be8a91fc0225d2eb8eb0",
+        "devices": [
+          "Samsung Galaxy S8-7.0",
+          "Google Pixel 3-10.0"
+        ],
+        "project": "SampleEspresso",
+        "testSuite": "bs://8df3f698cf7678cf61d5cf85bb514e456a429346"
+      },
+      "start_time": "2020-01-28 12:06:53 UTC",
+      "status": "failed",
+      "test_suite_details": {
+        "bundle_id": "com.example.tipcalculator.test",
+        "custom_id": null,
+        "name": "app-debug-androidTest.apk",
+        "url": "bs://8df3f698cf7678cf61d5cf85bb514e456a429346",
+        "version": ""
+      }
+    },
+    {
+      "app_details": {
+        "bundle_id": "com.example.perfecto.tipcalculator",
+        ....
+        ..
+        
+    }
+    .....
+  ]
+}
+```
 <br>
+<br>
+
+### Get the build summary
+View the overall status of your build execution and its summary e.g. app details, device executions in the build, test status on each device etc. Make use of the `Build ID` to fetch the build summary.
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso builds [flags]
+```
+
+#### FLAGS
+```
+      --build-id string     [*] Build ID
+  -h, --help                    help for project
+```
+
+#### Example
+```bash
+ ./browserstack app-automate espresso builds --build-id="69697232ccf53b65c6ebc8a911aad3bde062823f"
+```
+
+#### Sample Response
+```bash
+ {
+  "app_details": {
+    "bundle_id": "com.example.tipcalculator",
+    "custom_id": null,
+    "name": "app-debug.apk",
+    "url": "bs://7115de2070fe63b213f8be8a91fc0225d2eb8eb0",
+    "version": "1.0"
+  },
+  "build_id": "69697232ccf53b65c6ebc8a911aad3bde062823f",
+  "device_statuses": {
+    "error": {},
+    "success": {
+      "Google Pixel 3,10.0": "Success",
+      "Samsung Galaxy S8,7.0": "Success"
+    }
+  },
+  "devices": {
+    "Google Pixel 3-10.0": {
+      "session_details": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/...",
+      "session_id": "c947477dba4eabbf3e226640591f1b364cd87dd2",
+      "status": "done",
+      "test_report": "https://app-automate.browserstack.com/....",
+      "test_status": {
+        "FAILED": 2,
+        "IGNORED": 0,
+        "SUCCESS": 2,
+        "TIMEDOUT": 0
+      }
+    },
+    "Samsung Galaxy S8-7.0": {
+      "session_details": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/...",
+      "session_id": "7a0b613a9dd91a35398c71eee2cfebc44744fd03",
+      "status": "done",
+      "test_report": "https://app-automate.browserstack.com/...",
+      "test_status": {
+        "FAILED": 2,
+        "IGNORED": 0,
+        "SUCCESS": 2,
+        "TIMEDOUT": 0
+      }
+    }
+  },
+  "duration": "127 seconds",
+  "framework": "espresso",
+  "input_capabilities": {
+    "app": "bs://7115de2070fe63b213f8be8a91fc0225d2eb8eb0",
+    "devices": [
+      "Samsung Galaxy S8-7.0",
+      "Google Pixel 3-10.0"
+    ],
+    "project": "SampleEspresso",
+    "testSuite": "bs://8df3f698cf7678cf61d5cf85bb514e456a429346"
+  },
+  "start_time": "2020-01-28 12:06:53 UTC",
+  "status": "failed",
+  "test_suite_details": {
+    "bundle_id": "com.example.tipcalculator.test",
+    "custom_id": null,
+    "name": "app-debug-androidTest.apk",
+    "url": "bs://8df3f698cf7678cf61d5cf85bb514e456a429346",
+    "version": ""
+  }
+}
+```
+
+### View details about device executions for your build
+View the overall status of your build execution and device executions in the build. Also, view the JUnit report for each device execution.
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso sessions [flags]
+```
+
+#### COMMANDS
+```
+  info                Get the info about the sessions executions on device
+  junit-report        Access test reports in the standard JUnit XML format. Reports available for each session inside a build
+```
+
+### Get info about a device execution(inside a build)
+View the executions details of all the test cases(in your test-suite) on a device.
+> Note: Each device execution is regarded as a session
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso sessions info [flags]
+```
+
+#### FLAGS
+```
+  -b, --build-id       [*] Build ID
+  -s, --session-id     [*] Session ID
+```
+
+#### Example
+```bash
+ ./browserstack app-automate espresso sessions info --build-id="16ded045d014bafca58b1d16de80d340de6bcd3c" --session-id="9617605fd06f74bc6e2e703617851bf946ded264"
+```
+
+#### Sample Response
+```bash
+ {
+  "acceptInsecureCerts": "false",
+  "app_details": {
+    "bundle_id": "com.example.tipcalculator",
+    "custom_id": null,
+    "name": "app-debug.apk",
+    "url": "bs://7115de2070fe63b213f8be8a91fc0225d2eb8eb0",
+    "version": "1.0"
+  },
+  "build_id": "16ded045d014bafca58b1d16de80d340de6bcd3c",
+  "coverage": null,
+  "device": "Samsung Galaxy S8-7.0",
+  "deviceLogs": "true",
+  "duration": "20",
+  "idle_timeout": "900",
+  "networkLogs": "false",
+  "screenshots": null,
+  "session_id": "9617605fd06f74bc6e2e703617851bf946ded264",
+  "start_time": "2020-01-28 12:17:41 +0000",
+  "test_count": 4,
+  "test_details": {
+    "com.example.tipcalculator.TestClear": {
+      "simpleFailTest": {
+        "device_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/.../devicelogs",
+        "duration": "1.784",
+        "instrumentation_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/.../instrumentationlogs",
+        "network_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/.../networklogs",
+        "screenshots": [
+          "https://s3-us-west-1.amazonaws.com/bs-selenium-logs-usw/.../.../screenshots/\"\""
+        ],
+        "start_time": "2020-01-28 12:18:22 +0000",
+        "status": "FAILED",
+        "test_id": "9617605fd06f74bc6e2e703617851bf946ded26496e49ed8",
+        "video": "https://www.browserstack.com..."
+      }
+    },
+    "com.example.tipcalculator.TestAddition": {
+      "simpleFailTest2": {
+        "device_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/.../devicelogs",
+        "duration": "2.648",
+        "instrumentation_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/.../instrumentationlogs",
+        "network_log": "https://api.browserstack.com/app-automate/espresso/builds/.../sessions/tests/../networklogs",
+        "screenshots": [
+          "https://s3-us-west-1.amazonaws.com/bs-selenium-logs-usw/.../.../screenshots/\"\""
+        ],
+        "start_time": "2020-01-28 12:18:17 +0000",
+        "status": "FAILED",
+        "test_id": "9617605fd06f74bc6e2e703617851bf946ded26401445118",
+        "video": "https://www.browserstack.com/..."
+      }
+    },
+    "com.example.tipcalculator.TestButtons": {
+      "simpleTest": {
+        ....
+      },
+      "simpleTest1": {
+        ....
+      }
+    }
+  },
+  "test_status": {
+    "FAILED": 2,
+    "IGNORED": 0,
+    "QUEUED": 0,
+    "SUCCESS": 2,
+    "TIMEDOUT": 0
+  },
+  "test_suite_details": {
+    "bundle_id": "com.example.tipcalculator.test",
+    "custom_id": null,
+    "instrumentation": "android.support.test.runner.AndroidJUnitRunner",
+    "name": "app-debug-androidTest.apk",
+    "url": "bs://8df3f698cf7678cf61d5cf85bb514e456a429346"
+  },
+  "video": "true"
+}
+```
+<br>
+<br>
+
+### Get the JUnit report in XML format
+View the executions details of all the test cases(in your test-suite) on a device in the XML format
+> Note: Each device execution is regarded as a session
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso sessions junit-report [flags]
+```
+
+#### FLAGS
+```
+  -b, --build-id       [*] Build ID
+  -s, --session-id     [*] Session ID
+```
+
+#### Example
+```bash
+ ./browserstack app-automate espresso sessions junit-report --build-id="16ded045d014bafca58b1d16de80d340de6bcd3c" --session-id="9617605fd06f74bc6e2e703617851bf946ded264"
+```
+
+#### Sample Response
+```bash
+ <?xml version="1.0"?>
+ <testsuites>
+   <testsuite name="com.example.tipcalculator.SimpleFailTest2" tests="1" failures="1" skipped="0" timedout="0" time="2.648" timestamp="2020-01-28 12:18:17 +0000">
+     <properties>
+       <property session_id="9617605fd06f74bc6e2e703617851bf946ded264"/>
+       <property devicename="Samsung Galaxy S8"/>
+       <property os="Android"/>
+       <property version="7.0"/>
+     </properties>
+     <testcase name="simpleFailTest2" classname="com.example.perfecto.tipcalculator.SimpleFailTest2" result="failed" test_id="9617605fd06f74bc6e2e703617851bf946ded26401445118" time="2.648" video_url="https://www.browserstack.com/s3-upload/bs-video-logs-usw/s3-us-west-1/9617605fd06f74bc6e2e703617851bf946ded264/video-9617605fd06f74bc6e2e703617851bf946ded264.mp4#t=0,4">
+       <failure>android.support.test.espresso.NoActivityResumedException: Pressed back and killed the app
+  at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+  at java.lang.Thread.getStackTrace(Thread.java:1567)
+  at android.support.test.espresso.base.DefaultFailureHandler.getUserFriendlyError(DefaultFailureHandler.java:92)
+  at android.support.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:56)
+  at android.support.test.espresso.ViewInteraction.runSynchronouslyOnUiThread(ViewInteraction.java:184)
+  at android.support.test.espresso.ViewInteraction.doPerform(ViewInteraction.java:115)
+  at android.support.test.espresso.ViewInteraction.perform(ViewInteraction.java:87)
+  at android.support.test.espresso.Espresso.pressBack(Espresso.java:189)
+  at com.example.perfecto.tipcalculator.SimpleFailTest2.simpleFailTest2(SimpleFailTest2.java:69)
+  at java.lang.reflect.Method.invoke(Native Method)
+  at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+  ....
+```
+
+## Debug your Espresso builds
+You can debug your Espresso builds on BrowserStack using the range of debugging options available. 
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso debug [commands] [flags]
+```
+
+#### COMMANDS
+```
+ network-logs          Get the network Logs
+ device-logs           Get the device logs
+ app-profiling         Device Logs of your session execution
+```
+<br>
+<br>
+
+### Debug - Network logs
+Get the Network Logs in HAR (HTTP Archive) format for the session executed on the BrowserStack's real devices
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso debug network-logs [flags]
+```
+
+#### FLAGS
+```
+  -b, --build-id      [*] Build ID
+  -t, --test-id       [*] Test ID
+```
+  
+#### Example
+```bash
+ $ ./browserstack app-automate appium debug text-logs --build-id="8a46fdeb1dfssdd11a168292ac0925be06yy19e8" --session-id="e015915c695bn76dcbbebc26d566t489916e53ae"
+ ```
+ 
+ #### Sample Response
+```bash
+ {
+    "log": {
+      "creator": {
+        "comment": "mitmproxy version mitmproxy 4.0.4",
+        "name": "mitmproxy har_dump",
+        "version": "0.1"
+      },
+      "entries": [............],
+      "version": "1.2"
+   }
+ }
+```
+<br>
+<br>
+
+### Debug - Device Logs
+Get the device level logs for the session executed on the BrowserStack's real devices
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso debug device-logs [flags]
+```
+
+#### FLAGS
+```
+-b, --build-id=build-id        [*] Build ID 
+-s, --test-id=test-id          [*] Test ID
+```
+
+#### Example
+```bash
+ $ ./browserstack app-automate espresso debug device-logs --build-id="8a46fdeb1dfssdd11a168292ac0925be06yy19e8" --session-id="e015915c695bn76dcbbebc26d566t489916e53ae"
+```
+#### Sample Response
+```bash
+   03-04 12:51:07.815 E/Zygote  ( 5306): isWhitelistProcess - Process is Whitelisted
+   03-04 12:51:07.816 E/libpersona( 5306): scanKnoxPersonas
+   03-04 12:51:07.816 E/libpersona( 5306): Couldn't open the File - /data/system/users/0/personalist.xml - No such file or directory
+   03-04 12:51:07.817 W/SELinux ( 5306): SELinux selinux_android_compute_policy_index : Policy Index[2],  Con:u:r:zygote:s0 RAM:SEPF_SM-G960F_8.0.0_0001, [-1 -1 -1 -1 0 1]
+   03-04 12:51:07.817 I/SELinux ( 5306): SELinux: seapp_context_lookup: seinfo=untrusted, level=s0:c512,c768, pkgname=com.example.calculator
+   03-04 12:51:07.820 I/zygote64( 5306): Late-enabling -Xcheck:jni
+   03-04 12:51:07.833 I/zygote64( 5306): SuspendAllInternal: 1. proc_name -
+   03-04 12:51:07.833 I/zygote64( 5306): SuspendAllInternal: 2.proc_name - zygote64
+   03-04 12:51:07.856 D/TimaKeyStoreProvider( 5306): TimaKeyStore is not enabled: cannot add TimaSignature Service and generateKeyPair Service
+   03-04 12:51:07.856 D/ActivityThread( 5306): Added TimaKeyStore provider
+   03-04 12:51:07.892 W/System  ( 5306): ClassLoader referenced unknown path:
+   03-04 12:51:07.921 I/MonitoringInstr( 5306): Instrumentation started on process com.example.calculator
+   03-04 12:51:07.923 I/MonitoringInstr( 5306): Setting context classloader to 'dalvik.system.PathClassLoader[DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/base.apk", zip file "/data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/base.apk"],nativeLibraryDirectories=[/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/lib/arm64, /data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/lib/arm64, /system/lib64, /vendor/lib64]]]', Original: 'dalvik.system.PathClassLoader[DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/base.apk", zip file "/data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/base.apk"],nativeLibraryDirectories=[/data/app/com.example.calculator.test-FT-E3kCbEbzZ0GIi_BFfeA==/lib/arm64, /data/app/com.example.calculator-cH9566uwUH0fROfaRugB5Q==/lib/arm64, /system/lib64, /vendor/lib64]]]'
+```
+<br>
+<br>
+
+
+### Debug - App profiling
+The profiling logs help to identify where your app is making inefficient use of resources, such as the CPU, memory etc. Also, you can inspect the network traffic and helps you optimize the underlying code.
+
+#### USAGE
+```
+$ ./browserstack app-automate espresso debug app-profiling [flags]
+```
+
+#### FLAGS
+```
+-b, --build-id=build-id        [*] Build ID 
+-s, --test-id=test-id          [*] Test ID
+```
+
+#### Example
+```bash
+ $ ./browserstack app-automate espresso debug app-profiling --build-id="dc7a173b21f68f3c5e112fbf8f04b7f494eb6de9" --test-id="2847b9126eaf4255cb50cc048259a795dd5842760dfe00e7"
+```
+#### Sample Response
+```bash
+ [
+    {
+      "batt": 100,
+      "comexamplecalculator_cpu": null,
+      "comexamplecalculator_mem": null,
+      "comexamplecalculator_netr": null,
+      "comexamplecalculator_nets": null,
+      "cpu": 61,
+      "mem": 3396.71,
+      "mema": 1549.83,
+      "temp": 29,
+      "ts": 1583326267
+    },
+    {
+      "batt": 100,
+      "comexamplecalculator_cpu": null,
+      "comexamplecalculator_mem": null,
+      "comexamplecalculator_netr": null,
+      "comexamplecalculator_nets": null,
+      "cpu": 50,
+      "mem": 3396.71,
+      "mema": 1544.87,
+      "temp": 29,
+      "ts": 1583326268
+    },
+    ...
+ ]
+
+```
+
 
 
 ## Test your XCUITest builds

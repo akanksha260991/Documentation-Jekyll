@@ -28,7 +28,7 @@ Second, mention the **app_url** of the apps you want to install, in your test sc
 adb uninstall package
 ```
 
-**Using BrowserStack**
+**Using BrowserStack**<br>
 You don't have to explicitly uninstall an app after you're done with your tests. We automatically uninstall your apps, delete the data that was added/modified during your tests and clean up the device before running another session on that device.
 
 If you want to uninstall and reinstall a package within the same session, we recommend you to reset the app instead.
@@ -41,7 +41,7 @@ If you want to uninstall and reinstall a package within the same session, we rec
 adb shell pm clear package
 ```
 
-**Using BrowserStack**
+**Using BrowserStack**<br>
 You can use [Appium's reset package](https://appium.io/docs/en/commands/device/app/reset-app/) functionality to clear all the data associated with the app.
 <br>
 <br>

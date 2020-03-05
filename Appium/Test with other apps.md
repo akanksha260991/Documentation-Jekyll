@@ -1,5 +1,5 @@
 ## Test with other apps
-You can test the scenario in which your main app interacts with some other app
+#### You can test the scenario in which your main app interacts with some other app
 
 BrowserStack allows you to sepcify an app or list of apps (as an array) to install prior to starting your test execution. Follow the steps below:
 
@@ -24,6 +24,6 @@ b. Use the app_url in the `otherApps' capability in your script
    "otherApps", "bs://c947477dba4eabbf3e226640591f1b364cd87dd2","bs://7a0b613a9dd91a35398c71eee2cfebc44744fd03" # Other apps
 ```
 
-
+> **Note:** Maximum 3 app ids allowed. This capability has to be used along with app capability.
 
 

@@ -3,7 +3,8 @@ You can test the scenario in which your main app interacts with some other app
 
 BrowserStack allows you to sepcify an app or list of apps (as an array) to install prior to starting your test execution. Follow the steps below:
 
-<li> Upload the app(s) on BrowserStack <br>
+a. Upload the app(s) on BrowserStack <br>
+<br>
 API to upload the app:
 ```
   curl -u "akanksha48:mUsSYL3azt9pLzEYLPaX" \
@@ -15,7 +16,7 @@ Sample Response:
  {"app_url":"bs://6fh4s8da9c5efh6fb3t2a44s6r7nc"}
 ```
 
-<li> Use the app_url in the `otherApps' capability in your script
+b. Use the app_url in the `otherApps' capability in your script
 ```java
    "device", "Samsung Galaxy S8 Plus"
    "os_version", "7.0"

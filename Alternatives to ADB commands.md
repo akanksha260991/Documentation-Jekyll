@@ -182,7 +182,7 @@ adb shell screencap filename
 ```
 
 **Using BrowserStack**<br>
-You use BrowserStack's Screenshots functionality to generate screenshots. Just pass the browserstack.debug capability in your tests' desired capabilities, and BrowserStack will automatically generate screenshots at various steps in your test so that you can consume them / debug using them later.
+You use BrowserStack's Screenshots functionality to generate screenshots. Just pass the `browserstack.debug` capability in your tests' desired capabilities, and BrowserStack will automatically generate screenshots at various steps in your test so that you can consume them / debug using them later.
 
 You can use Appium's screenshot functionality to get the screenshot in base64 or PNG format that you can write to a file locally on your machine.
 

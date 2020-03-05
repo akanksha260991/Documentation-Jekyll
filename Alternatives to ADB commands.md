@@ -4,17 +4,31 @@ ADB provides users a CLI to communicate with Android devices, like installing ap
 
 ### Managing Applications
 
-| Use Case                            	| Using ADB                                                                                                                            	| Using BrowserStack                                                                                                                                                                                                                                                                                                                                                                           	|
-|-------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Install packages                    	| adb install [options] package_name<br><br><br>adb install-multiple [options] packages<br><br><br>adb shell pm install [options] path 	| Upload your apps and obtain the app_url. Refer to upload app section to see how this can be done.<br>Use the app_url of the uploaded apps you want to install in the Desired Capabilities while running test on BrowserStack. <br>> Note: The app you want to test will be your main app, and the apps your main app depends on will be the `otherApps`.                             	|
-| Uninstall packages                  	| adb uninstall package                                                                                                                	| You don't have to explicitly uninstall an app after you're done with your tests. We automatically uninstall your apps, delete the data that was added / modified during your tests and clean up the device before running another test session on that device.<br>If you want to uninstall the package, and reinstall it during the same session, we recommend you to reset the app instead. 	|
-| Reset the app or clear package data 	| adb shell pm clear package                                                                                                           	| You can use Appium's reset package functionality to clear all the data associated with the app.                                                                                                                                                                                                                                                                                              	|
+#### Install packages
 
+**Using ADB**
+```bash
+adb install [options] package_name
+adb install-multiple [options] packages
+adb shell pm install [options] path
+```
 
+**Using BrowserStack**
+Installing packages on devices you want to run your tests on is simple.
 
-### File transfers
-| Use Case                                                              	| Using ADB             	| Using BrowserStack                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        	|
-|-----------------------------------------------------------------------	|-----------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Copy a file or directory and its <br>sub-directories to the device.   	| adb push local remote 	| By default, BrowserStack provides a set of images & videos you can use to test whether file uploads work fine in your app. Also you can use your own images & videos by uploading it on BrowserStack.<br><br>First, [upload your custom media](https://www.browserstack.com/app-automate/rest-api?framework=appium#media-upload) to BrowserStack and obtain the `media_url`.<br><br>Second, specify the `media_url` of the media in the `browserstack.uploadMedia` capability.<br>You can also use Appium's push file functionality, but you can only push files into the /data/tmp/ folder, and can pull the file from that location using Appium's pull functionality.                                             	|
-| Copy a file or directory and its <br>sub-directories from the device. 	| adb pull remote local 	| At the moment, we don't support pulling a file from the device to your local system.<br><br>If you want to take a screenshot, store it locally on the device, and retrieve it using pull command.<br><br>You can also use BrowserStack's Screenshots functionality to generate screenshots. Just pass the `browserstack.debug` capability in your tests to **true**, and BrowserStack will automatically generate screenshots at various steps in your test. You can also use Appium's pull file functionality, but you can only pull files from the /data/tmp folder. <br><br>You can also push files to the same location using Appium's push functionality. 	|
-| Copy a file or directory and its <br>sub-directories to the device.   	| adb push local remote 	| By default, BrowserStack provides a set of images & videos you can use to test whether file uploads work fine in your app. Also you can use your own images & videos by uploading it on BrowserStack.<br><br>First, [upload your custom media](https://www.browserstack.com/app-automate/rest-api?framework=appium#media-upload) to BrowserStack and obtain the `media_url`.<br><br>Second, specify the `media_url` of the media in the `browserstack.uploadMedia` capability.<br>You can also use Appium's push file functionality, but you can only push files into the /data/tmp/ folder, and can pull the file from that location using Appium's pull functionality.                                             	|
+First, you must upload your apps and obtain the app_url. Refer to [upload app section](https://www.browserstack.com/app-automate/rest-api#app-upload) to see how this can be done.
+
+Second, mention the **app_url** of the apps you want to install, in your test scripts. The app you want to test will be your main app, and the apps your main app depends on will be the `otherApps`.
+
+#### Uninstall packages
+
+**Using ADB**
+```bash
+adb uninstall package
+```
+
+**Using BrowserStack**
+You don't have to explicitly uninstall an app after you're done with your tests. We automatically uninstall your apps, delete the data that was added / modified during your tests and clean up the device before running another test session on that device.
+
+If you want to uninstall the package, and reinstall it during the same session, we recommend you to reset the app instead.
+

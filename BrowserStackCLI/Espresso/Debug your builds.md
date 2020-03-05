@@ -49,7 +49,7 @@ $ ./browserstack app-automate espresso debug network-logs [flags]
 ```
 <br>
 
-### Debug - Device Logs
+### Debug - Device logs
 Get the device level logs for the session executed on the BrowserStack's real devices
 
 #### USAGE

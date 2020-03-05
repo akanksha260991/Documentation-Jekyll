@@ -72,7 +72,7 @@ You can also use Appium's push file functionality, but you can only [push files]
 adb pull remote local
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 At the moment, we don't support pulling a file from the device to your local system.
 
 If you want to take a screenshot, store it locally on the device, and retrieve it using pull command, you can use [Appium's screenshot functionality](https://appium.io/docs/en/commands/session/screenshot/) to get the screenshot in base64 or PNG format that you can write to a file locally on your machine.
@@ -93,7 +93,7 @@ You can also use Appium's pull file functionality, but you can only pull files f
 adb shell pm grant package_name permission
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can auto-grant permissions passing the autoGrantPermissions capability while starting the test.
 
 You can also handle with the permission alerts, and click the allow button during the test.
@@ -106,7 +106,7 @@ You can also handle with the permission alerts, and click the allow button durin
 adb shell pm revoke package_name permission
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You cannot do this on BrowserStack at the moment.
 
 If you need to perform your tests with limited permissions, we recommend you to run a new test session and allow / disallow the required permissions during the test by handling the permission alerts.
@@ -123,7 +123,7 @@ If you need to perform your tests with limited permissions, we recommend you to 
 adb logcat [options]
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can access these logs in the Device Logs section of the test session page in your [App Automate dashboard](https://app-automate.browserstack.com/)
 
 You can also retrieve these logs via the [REST API](https://www.browserstack.com/app-automate/rest-api?framework=appium#sessions)
@@ -140,7 +140,7 @@ You can also retrieve these logs via the [REST API](https://www.browserstack.com
 adb shell am start [options] intent
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can use [Appium's start activity](https://appium.io/docs/en/commands/device/activity/start-activity/) functionality to start an Android activity by providing package name and activity name.
 <br>
 
@@ -151,7 +151,7 @@ You can use [Appium's start activity](https://appium.io/docs/en/commands/device/
 adb shell am force-stop package
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can use [Appium's close app functionality](https://appium.io/docs/en/commands/device/app/close-app/) to force stop and close your application.
 
 Remember that you can only force stop your main application (specified by the app capability ), but not the applications your main application depends on (the ones specified in otherApps capability).
@@ -164,7 +164,7 @@ Remember that you can only force stop your main application (specified by the ap
 adb shell am instrument --no-window-animation [options]
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can now use Appium's capability disableWindowAnimation to disable system's window animations.
 
 Remember that you need to also set the browserstack.appium_version capability to 1.9.1 or later because this capability is not available in the older versions of Appium.
@@ -181,7 +181,7 @@ Remember that you need to also set the browserstack.appium_version capability to
 adb shell screencap filename
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You use BrowserStack's Screenshots functionality to generate screenshots. Just pass the browserstack.debug capability in your tests' desired capabilities, and BrowserStack will automatically generate screenshots at various steps in your test so that you can consume them / debug using them later.
 
 You can use Appium's screenshot functionality to get the screenshot in base64 or PNG format that you can write to a file locally on your machine.
@@ -193,7 +193,7 @@ You can use Appium's screenshot functionality to get the screenshot in base64 or
 adb shell screenrecord [options] filename
 ```
 
-**Using BrowserStack**	
+**Using BrowserStack**<br>
 You can use `browserstack.video` capability in your tests scripts if you want to enable video recording during your test.
 
 Remember that you need to also set the `browserstack.appium_version` capability to 1.9.1 or later because this capability is not available in the older versions of Appium.

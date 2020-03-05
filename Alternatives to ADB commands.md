@@ -54,9 +54,9 @@ adb push local remote
 **Using BrowserStack**<br>
 By default, BrowserStack provides a set of images & videos you can use to test whether file uploads work fine in your app. Also, you can upload your custom media and use them in your tests.
 
-First, [upload your custom media](https://www.browserstack.com/app-automate/rest-api?framework=appium#media-upload) ) to BrowserStack and obtain the **media_url**
+First, [upload your custom media](https://www.browserstack.com/app-automate/rest-api?framework=appium#media-upload) to BrowserStack and obtain the **media_url**
 
-Second, specify the **media_url** in the `browserstack.uploadMedia`' caopability in your test scripts. Refer to our [capability builder](https://www.browserstack.com/app-automate/capabilities) for more details.
+Second, specify the **media_url** in the `browserstack.uploadMedia`' capability in your test scripts. Refer to our [capability builder](https://www.browserstack.com/app-automate/capabilities) for more details.
 
 You can also use Appium's push file functionality, but you can only [push files](https://appium.io/docs/en/commands/device/files/push-file/) into the /data/tmp/ folder, and can pull the file from that location using Appium's pull functionality.
 
@@ -73,7 +73,7 @@ At the moment, we don't support pulling a file from the device to your local sys
 
 If you want to take a screenshot, store it locally on the device, and retrieve it using pull command, you can use [Appium's screenshot functionality](https://appium.io/docs/en/commands/session/screenshot/) to get the screenshot in base64 or PNG format that you can write to a file locally on your machine.
 
-You can also use BrowserStack's Screenshots functionality to generate screenshots. Just pass the browserstack.debug capability in your tests' desired capabilities, and BrowserStack will automatically generate screenshots at various steps in your test so that you can consume them / debug using them later.
+You can also use BrowserStack's Screenshots functionality to generate screenshots. Just pass the `browserstack.debug` capability in your test scripts, and BrowserStack will automatically generate screenshots at various steps in your test.
 
-You can also use Appium's pull file functionality, but you can only pull files from the /data/tmp folder. You can also push files to the same location using Appium's push functionality.
+You can also use Appium's pull file functionality, but you can only pull files from the /data/tmp folder. You can also [push files](https://appium.io/docs/en/commands/device/files/push-file/) to the same location using Appium's push functionality.
 

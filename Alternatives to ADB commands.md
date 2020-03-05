@@ -19,7 +19,7 @@ Installing packages on devices you want to run your tests on is simple.
 First, you must upload your apps and obtain the app_url. Refer to [upload app section](https://www.browserstack.com/app-automate/rest-api#app-upload) to see how this can be done.
 
 Second, mention the **app_url** of the apps you want to install, in your test scripts. The app you want to test will be your main app, and the apps your main app depends on will be the `otherApps`.
-
+<br>
 ### 2. Uninstall packages
 
 **Using ADB**
@@ -31,7 +31,7 @@ adb uninstall package
 You don't have to explicitly uninstall an app after you're done with your tests. We automatically uninstall your apps, delete the data that was added/modified during your tests and clean up the device before running another session on that device.
 
 If you want to uninstall and reinstall a package within the same session, we recommend you to reset the app instead.
-
+<br>
 ### 3. Reset the app or clear package data
 
 **Using ADB**
@@ -41,7 +41,8 @@ adb shell pm clear package
 
 **Using BrowserStack**
 You can use [Appium's reset package](https://appium.io/docs/en/commands/device/app/reset-app/) functionality to clear all the data associated with the app.
-
+<br>
+<br>
 ## File Transfers
 
 ### 1. Copy a file or directory and its sub-directories to the device.

@@ -1,0 +1,119 @@
+## Upload and Manage your test-suite
+Upload and manage your test-suite for testing your apps using Espresso or XCUITest framework. Espresso test-suite has .apk format and XCUITest has .ipa format. 
+ 
+#### USAGE
+```
+$ ./browserstack app-automate testsuite [commands] [flags]
+```
+
+#### COMMANDS
+```
+  upload            Upload test suite on BrowserStack
+  list              List the recent test suites uploaded on BrowserStack
+  delete            Delete test suite uploaded on BrowserStack
+```
+
+#### FLAGS
+```
+  --config      Config file for your tests. Default: $HOME/.browserstack-cli.yaml
+  -h, --help    help for testsuite
+```
+<br>
+<br>
+
+### Upload your test-suite
+Upload TestSuite to BrowserStack using the required flags `path`/`url` and `framework`.
+ 
+#### USAGE
+```
+$ browserstack app-automate testsuite upload [flags]
+```
+
+#### FLAGS
+```
+  -p, --path          [*] Local path of test suite
+  -u, --url           [*] Public URL of test suite
+  -f, --framework     [*] test suite framework. Values: espresso/xcuitest
+      --custom_id     Set a custom_id to uploaded test suite. It allows to upload multiple apps under same name
+  -h, --help          help for upload
+```
+
+#### Example
+```bash
+# Upload from local system
+$ ./browserstack app-automate testsuite upload --path="/path/to/my/testsuite/directory/apps-debug-Test.apk" --framework="espresso"  --custom_id="MyTest"
+
+# Upload from URL
+$ ./browserstack app-automate testsuite upload --url="https://www.browserstack.com/app-automate/sample-apps/android/CalculatorTest.apk" --framework="espresso"  --custom_id="MyTest"
+```
+#### Sample Response
+```bash
+{
+  "test_url": "bs://74beb90e8e32710ddddd2c1d684898e0434a4dd1",
+  "custom_id": "MyTest",
+  "shareable_id": "akanksha48/MyTest"
+}
+```
+<br>
+<br>
+
+### Delete your test-suite
+Delete a test-suite using the required flag `testsuite`. The `testsuite` is the test_url (bs://...) of the test-suite uploaded on BrowserStack.
+ 
+#### USAGE
+```
+$ ./browserstack app-automate testsuite delete [flags]
+```
+
+#### FLAGS
+```
+  -f, --framework       [*] test suite framework. Values: espresso/xcuitest
+      --testsuite       [*] test_url (bs://...) of the uploaded test on the BrowserStack servers
+  -h, --help                help for delete
+```
+
+#### Example
+```bash
+$ ./browserstack app-automate testsuite delete --testsuite="bs://f946e972e7d0cdd394ada763f13ab14628a1b5fd" --framework "espresso"
+```
+<br>
+<br>
+
+### List your test suites
+Get the list of uploaded test-suites on Browserstack. The response is presented in the JSON format
+ 
+#### USAGE
+```
+$ ./browserstack app-automate testsuite list [flags]
+```
+
+#### FLAGS
+```
+  -f, --framework       [*] test suite framework. Values: espresso/xcuitest
+  -h, --help            help for list
+```
+
+#### Sample Response
+```bash
+[
+  {
+    "custom_id": "MyTest"
+    "framework": "espresso",
+    "test_suite_id": "f946e972e7d0cdd394ada763f13ab14628a1b5fd",
+    "test_suite_name": "CalculatorTest.apk",
+    "test_suite_url": "bs://f946e972e7d0cdd394ada763f13ab14628a1b5fd",
+    "uploaded_at": 1582702377
+  },
+  {
+    "custom_id": null,
+    "framework": "espresso",
+    "test_suite_id": "c8d72e7be2b0b0174b9cf492187dc549708540bc",
+    "test_suite_name": "app-debug-androidTest.apk",
+    "test_suite_url": "bs://c8d72e7be2b0b0174b9cf492187dc549708540bc",
+    "uploaded_at": 1582634949
+  }
+  ...
+]
+```
+<br>
+<br>

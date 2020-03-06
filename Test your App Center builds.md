@@ -159,6 +159,6 @@ For executing the test on BrowserStack, update your Appium scripts as mentioned 
    // Update your USERNAME and ACCESS_KEY
    "https://USERNAME:ACCESS_KEY@hub-cloud.browserstack.com/wd/hub"
    ```
-   > Note: The BrowserStack credentials (username and accesskey) can be obtained from Settings page
+   > Note: The BrowserStack credentials (username and accesskey) can be obtained from [Settings](https://www.browserstack.com/accounts/settings) page
    
 BrowserStack supports automated mobile app tests using Appium/Espresso/XCUI frameworks, and running your tests on our cloud setup is simple and straightforward. To get started, refer to the BrowserStack documentation for [Appium](https://www.browserstack.com/docs?product=app-automate), [Espresso](https://www.browserstack.com/app-automate/espresso/get-started) and XCUITest(https://www.browserstack.com/app-automate/xcuitest/get-started). Once you run the test, you will be able to view the test result on the App Automate dashboard.

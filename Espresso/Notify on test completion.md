@@ -13,7 +13,7 @@ Example:
 ```bash
 curl -u "USERNAME:ACCESS_KEY" \
 -X POST "https://api-cloud.browserstack.com/app-automate/espresso/build" \
--d '{"callbackURL" : "https://jenkins.xyz.test.update.io", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
+-d '{"callbackURL" : "https://jenkins.xyz.test.io", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
 -H "Content-Type: application/json" 
 ```
 Response:
@@ -26,7 +26,7 @@ Response:
         "devices": [
             "Google Pixel 2-9.0"
         ],
-        "callbackURL": "http://jenkins.test.io",
+        "callbackURL": "http://jenkins.xyz.test.io",
         "deviceLogs": true,
         "app": "bs://b18df51f8f3b19382f3bc2eaae42da7b269f59eb",
         "testSuite": "bs://05fe895ace92a183cf03295bea09f67630dd8ef5",

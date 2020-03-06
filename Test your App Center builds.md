@@ -143,7 +143,7 @@ We will delete the uploaded app after 30 days from the date of upload.
 **Step 5: Execute the test** <br>
 For executing the test on BrowserStack, update your Appium scripts as mentioned below:
 
-1. The app capability with the app_url obtained in the Step 4 above
+1. The `app` capability with the app_url obtained in the Step 4 above
    Example
    ```
    "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4"
@@ -155,7 +155,7 @@ For executing the test on BrowserStack, update your Appium scripts as mentioned 
    "os_version": "7.0"
    ```
 3. To initialize the instance of Appium driver on BrowserStack, use the following URL:
-   ```bash
+   ```
    // Update your USERNAME and ACCESS_KEY
    "https://USERNAME:ACCESS_KEY@hub-cloud.browserstack.com/wd/hub"
    ```

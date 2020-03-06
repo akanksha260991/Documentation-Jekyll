@@ -13,8 +13,61 @@ Example:
 ```bash
 curl -u "USERNAME:ACCESS_KEY" \
 -X POST "https://api-cloud.browserstack.com/app-automate/espresso/build" \
--d '{"callbackURL" : "https://jenkins.xyz.test.update.url", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
+-d '{"callbackURL" : "https://jenkins.xyz.test.update.io", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
 -H "Content-Type: application/json" 
+```
+Response:
+```bash
+{
+    "build_id": "2744b99082a71f2974e0c2291d13aaed35a454be",
+    "framework": "espresso",
+    "status": "done",
+    "input_capabilities": {
+        "devices": [
+            "Google Pixel 2-9.0"
+        ],
+        "callbackURL": "http://jenkins.test.io",
+        "deviceLogs": true,
+        "app": "bs://b18df51f8f3b19382f3bc2eaae42da7b269f59eb",
+        "testSuite": "bs://05fe895ace92a183cf03295bea09f67630dd8ef5",
+        "project": "Untitled Espresso Project"
+    },
+    "start_time": "2020-03-06 10:40:27 UTC",
+    "device_statuses": {
+        "success": {},
+        "error": {}
+    },
+    "app_details": {
+        "url": "bs://b18df51f8f3b19382f3bc2eaae42da7b269f59eb",
+        "bundle_id": "com.sample.browserstack.samplecalculator",
+        "version": "1.0",
+        "name": "Calculator.apk",
+        "custom_id": null
+    },
+    "test_suite_details": {
+        "url": "bs://05fe895ace92a183cf03295bea09f67630dd8ef5",
+        "bundle_id": "com.sample.browserstack.samplecalculator.test",
+        "version": "",
+        "name": "CalculatorTest.apk",
+        "custom_id": null
+    },
+    "duration": "80 seconds",
+    "devices": {
+        "Google Pixel 2-9.0": {
+            "session_id": "1b1a380df1fe53ded9c7c61e2241f7200705167f",
+            "status": "running",
+            "session_details": "https://api.browserstack.com/app-automate/espresso/builds/..../sessions/....",
+            "test_status": {
+                "ERROR": 0,
+                "IGNORED": 0,
+                "TIMEDOUT": 0,
+                "FAILED": 0,
+                "SUCCESS": 9
+            },
+            "test_report": "https://app-automate.browserstack.com/......"
+        }
+    }
+}
 ```
 
 
@@ -30,7 +83,7 @@ Example:
 ```bash
 curl -u "USERNAME:ACCESS_KEY" \
 -X POST "https://api-cloud.browserstack.com/app-automate/espresso/build" \
--d '{"projectNotifyURL" : "https://jenkins.xyz.project.update.url", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
+-d '{"projectNotifyURL" : "https://jenkins.xyz.project.update.io", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f7c874f21852ba57957a3fdc33f47514288c4ba4", "testSuite": "bs://e994db8333e32a5863938666c3c3491e778352ff"}' \
 -H "Content-Type: application/json" 
 ```
 

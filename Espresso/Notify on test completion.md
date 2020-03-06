@@ -72,7 +72,7 @@ Response:
 
 
 ### Notify project completion
-You can make use of the `projectNotifyURL' url where we can send a confirmation once your entire build/project execution is completed on BrowserStack. To use notify URL, you need to pass the `projectNotifyURL` parameter in the REST API request to start Espresso test execution.
+You can make use of the `projectNotifyURL` url where we can send a confirmation once your entire build/project execution is completed on BrowserStack. To use notify URL, you need to pass the `projectNotifyURL` parameter in the REST API request to start Espresso test execution.
 
 | Param            | Description                                                                                 	|
 |------------------|---------------------------------------------------------------------------------------------	|

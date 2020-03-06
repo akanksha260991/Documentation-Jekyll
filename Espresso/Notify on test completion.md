@@ -1,6 +1,6 @@
 # Notify on test/project completion
 
-You can order notify when the execution of a project(or any test within a project) has completed. The callback will have the data related to your executions - status, duration etc. 
+Notify when the execution of a project(or any test within a project) has completed. The callback will have the data related to your executions - status, duration etc. 
 
 ### Notify test completion
 You can make use of the `callbackURL` where we can send a confirmation once your single test execution is completed. To use callback URL, you need to pass the `callbackURL` parameter in the REST API request to start Espresso test execution.

@@ -84,7 +84,7 @@ You can also use Appium's pull file functionality, but you can only pull files f
 <br>
 <br>
 
-# Granting Permissions to Apps
+## Granting Permissions to Apps
 
 ### 1. Grant a permission to an app
 

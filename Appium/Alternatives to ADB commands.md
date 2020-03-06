@@ -202,8 +202,7 @@ Remember that you need to also set the `browserstack.appium_version` capability 
 <br>
 
 ## App Profiling
-
-### Get the battery consumption, memory/CPU utilization and network performance
+Get the battery consumption, memory/CPU utilization and network performance
 
 **Using ADB**
 ```bash

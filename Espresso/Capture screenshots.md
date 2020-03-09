@@ -4,9 +4,9 @@
 Spoon has the ability to take screenshots during your tests. This allows for visual inspection of test executions across devices.
 If you want to capture the screenshots of your tests using the Spoon framework, use `enableSpoonFramework` while executing the espresso test on BrowserStack:
 
-| Param               	| Description                                                            	|
-|----------------------	|------------------------------------------------------------------------	|
-| enableSpoonFramework 	| Set the parameter if you want to capture the screenshots of your tests 	|
+| Param               	| Values          | Description                                               |
+|----------------------	|---------------- | --------------------------------------------------------- |
+| enableSpoonFramework 	| true/false(**Default:** false)            | Set the parameter if you want to capture the screenshots of your tests 	|
 
 
 ### View Screenshots on App Automate dashboard 

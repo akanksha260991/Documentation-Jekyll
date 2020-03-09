@@ -12,6 +12,6 @@ Example :
 ```bash
 curl -u "USERNAME:ACCESS_KEY" \
 -X POST "https://api-cloud.browserstack.com/app-automate/xcuitest/build" \
--d '{"idleTimeout" : "800", "devices": ["iPhone 8 Plus-11.0"], "app": "bs://f5L3azt9pLzE995f49376eb1fa3c284dc321f8d", "testSuite": "bs://6eb1fa3c284ddbe9971b2d1aee0d52943b9c081"}' \
+-d '{"idleTimeout" : "800", "devices": ["Samsung Galaxy S8-7.0"], "app": "bs://f5L3azt9pLzE995f49376eb1fa3c284dc321f8d", "testSuite": "bs://6eb1fa3c284ddbe9971b2d1aee0d52943b9c081"}' \
 -H "Content-Type: application/json" 
 ```

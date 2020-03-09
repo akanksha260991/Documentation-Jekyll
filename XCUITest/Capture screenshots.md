@@ -4,9 +4,11 @@
 XCode allows you to capture the screenshots for better debugging of your app. Screenshots allow the visual inspection of test executions across devices.
 If you want to save the screenshots(captured by XCode) of your tests on BrowserStack, use `debugscreenshots` while executing the test:
 
-| Param               	| Description                                                            	|
-|----------------------	|------------------------------------------------------------------------	|
-| debugscreenshots    	| Set this parameter to true to save the screenshots automatically captured by XCode. Screenshots can be rendered by accessing the rawlogs using the XCUITest sessions API 	|
+| Param               	| Value                           | Description                           |
+|---------------------- |-------------------------------- | ------------------------------------- |
+| debugscreenshots    	| true/false (**Default:** false)     | Set this parameter to true to save the screenshots automatically captured by XCode.  	|
+
+>**Note:** Screenshots can be viewed under the **Visual Logs** in the App Automate Dashboard
 
 Example:
 ```

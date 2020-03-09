@@ -35,8 +35,9 @@ curl -u "USERNAME:ACCESS_KEY" \
 -H "Content-Type: application/json"
 ```
 
-> Note: 1. Only 5 files are allowed to be passed(per test).<br>
-        2. Supported format for images are JPG, JPEG, PNG, GIF, BMP
-        3. Max file size allowed for images is 10MB
-        4. Supported format for videos are .mp4, .mov and .3gp - Max file size allowed for videos is 50MB
+> **Note:** 
+1. Only 5 files are allowed to be passed(per test) <br>
+2. Supported format for images are JPG, JPEG, PNG, GIF, BMP <br>
+3. Max file size allowed for images is 10MB <br>
+4. Supported format for videos are .mp4, .mov and .3gp - Max file size allowed for videos is 50MB <br>
  

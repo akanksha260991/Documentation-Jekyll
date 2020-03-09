@@ -78,7 +78,7 @@ You can make use of the `projectNotifyURL` url where we can send a confirmation 
 
 | Param            | Description                                                                                 	|
 |------------------|---------------------------------------------------------------------------------------------	|
-| projectNotifyURL |  Set the the notify url where we can send a confirmation once execution of all the builds under the project are completed|
+| projectNotifyURL |  Set the notify url where we can send a confirmation once execution of all the builds under the project are completed|
 
 >Note: The callback will be sent if there are no builds triggered for 5 mins with the same `project` post previous execution. Set this parameter along with `project` parameter.
 Example:

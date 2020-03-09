@@ -30,8 +30,8 @@ Sample Response
   .......
 ]
 ```
-<br>
-<br>
+
+
 ### List recent uploads for custom ID
 Here is an example API request to retrieve details about your recent Media File uploads under a specific custom id
 ```

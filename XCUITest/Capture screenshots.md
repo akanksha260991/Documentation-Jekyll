@@ -9,7 +9,7 @@ If you want to save the screenshots(captured by XCode) of your tests on BrowserS
 | debugscreenshots    	| true/false (**Default:** false)     | Set this parameter to true to save the screenshots automatically captured by XCode.  	|
 
 ### View Screenshots on App Automate dashboard 
-You can view the screenshots under **Visual Logs** tab inside the **Test Details** Page in [App Automate Dashboard](https://app-automate.browserstack.com/dashboard)
+You can view the screenshots under **Visual Logs** tab inside the **Test Details** page in [App Automate Dashboard](https://app-automate.browserstack.com/dashboard)
 
 
 ![screenshots](https://github.com/akanksha260991/Documentation-Jekyll/blob/master/Screenshot%202020-03-09%20at%201.09.39%20PM.png)

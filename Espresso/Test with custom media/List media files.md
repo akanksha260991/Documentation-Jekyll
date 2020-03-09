@@ -8,7 +8,7 @@ Here is an example API request to retrieve details about your recent Media File 
 ```
 curl -u "USERNAME:ACCESS_KEY" -X GET "https://api-cloud.browserstack.com/app-automate/recent_media_files"
 ```
-**Sample Response **
+Sample Response
 ```
 [
   {
@@ -36,7 +36,7 @@ Here is an example API request to retrieve details about your recent Media File 
 ```
 curl -u "USERNAME:ACCESS_KEY" -X GET "https://api-cloud.browserstack.com/app-automate/recent_media_files/<custom_id>"
 ```
-**Sample Response **
+Sample Response 
 ```
 [
   {
@@ -55,7 +55,7 @@ Here is an example API request to retrieve details about your recent Media File 
 ```
 curl -u "USERNAME:ACCESS_KEY" -X GET "https://api-cloud.browserstack.com/app-automate/recent_group_media
 ```
-**Sample Response **
+Sample Response
 ```
 [
   {

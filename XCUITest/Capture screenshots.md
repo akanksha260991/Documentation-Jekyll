@@ -8,7 +8,11 @@ If you want to save the screenshots(captured by XCode) of your tests on BrowserS
 |---------------------- |-------------------------------- | ------------------------------------- |
 | debugscreenshots    	| true/false (**Default:** false)     | Set this parameter to true to save the screenshots automatically captured by XCode.  	|
 
->**Note:** Screenshots can be viewed under the **Visual Logs** in the App Automate Dashboard
+### View Screenshots on App Automate dashboard 
+You can view the screenshots under **Visual Logs** tab inside the **Test Details** Page in [App Automate Dashboard](https://app-automate.browserstack.com/dashboard)
+
+
+![screenshots](https://github.com/akanksha260991/Documentation-Jekyll/blob/master/Screenshot%202020-03-09%20at%201.09.39%20PM.png)
 
 Example:
 ```
@@ -18,4 +22,4 @@ curl -u "USERNAME:ACCESS_KEY" \
 -H "Content-Type: application/json" 
 ```
 
->Note: See the [XCUIScreenshot](https://developer.apple.com/documentation/xctest/xcuiscreenshot)for details on how to capture your screenshots.
+>Note: See the [XCUIScreenshot](https://developer.apple.com/documentation/xctest/xcuiscreenshot) for details on how to capture your screenshots.

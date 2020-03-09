@@ -8,7 +8,9 @@ If you want to capture the screenshots of your tests using the Spoon framework, 
 |----------------------	|------------------------------------------------------------------------	|
 | enableSpoonFramework 	| Set the parameter if you want to capture the screenshots of your tests 	|
 
-<br>**View Screenshots on App Automate dashboard**<br>
+
+### View Screenshots on App Automate dashboard
+<br>
 You can view the screenshots under **Screenshots** tab inside the **Test Details** Page in [App Automate Dashboard](https://app-automate.browserstack.com/dashboard/)
 <br>
 <br>

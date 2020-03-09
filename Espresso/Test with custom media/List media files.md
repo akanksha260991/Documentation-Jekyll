@@ -30,7 +30,7 @@ Sample Response
   .......
 ]
 ```
-
+<br>
 
 ### List recent uploads for custom ID
 Here is an example API request to retrieve details about your recent Media File uploads under a specific custom id
@@ -50,7 +50,7 @@ Sample Response
   }
 ]
 ```
-
+<br>
 
 ### List recent uploads for the entire group
 Here is an example API request to retrieve details about your recent Media File uploads for the entire group

@@ -18,6 +18,5 @@ Example:
 For reading the values set in `key1`, use the `debug.test.key1` and not only `key1` in your appium test script.
 
 
-### How to get the capability enabled?
-In order to get the capability enabled for your tests, please [Contact Support](https://www.browserstack.com/contact#technical-support)
+> **Note:** In order to get the capability enabled for your tests, please [Contact Support](https://www.browserstack.com/contact#technical-support)
 

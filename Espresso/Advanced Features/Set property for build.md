@@ -22,6 +22,6 @@ curl -u "USERNAME:ACCESS_KEY" \
 ### How to use the values set
 For reading the values set in the execution API above, use the `debug.test.key1` and not only `key1` in your test script.
 
-
+> **Note:** In order to get the capability enabled for your tests, please [Contact Support](https://www.browserstack.com/contact#technical-support)
 
 

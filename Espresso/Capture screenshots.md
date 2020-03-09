@@ -9,7 +9,8 @@ If you want to capture the screenshots of your tests using the Spoon framework, 
 | enableSpoonFramework 	| Set the parameter if you want to capture the screenshots of your tests 	|
 
 <br>**View Screenshots on App Automate dashboard**<br>
-You can view the screenshots under **Screenshots** tab inside the **Test Details** Page in (App Automate Dashboard)[https://app-automate.browserstack.com/dashboard/]
+You can view the screenshots under **Screenshots** tab inside the **Test Details** Page in [App Automate Dashboard](https://app-automate.browserstack.com/dashboard/)
+<br>
 <br>
 ![screenshots](https://github.com/akanksha260991/Documentation-Jekyll/blob/master/Screenshot%202020-03-09%20at%2012.59.51%20PM.png)
 <br>

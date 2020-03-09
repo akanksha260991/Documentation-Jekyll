@@ -1,6 +1,6 @@
 # Set the property for build
 
-If you are trying to set some arguments for an Instrumentation test, you can make use of `setProp` parameter. If you pass `key1` and `value1` in the params, we set the key as *debug.test.key1 = value1*.
+If you are trying to set some arguments for Instrumentation test, you can make use of `setProp` parameter. If you pass `key1` and `value1` in the params, we set the key as *debug.test.key1 = value1*.
 > **Note:** For setprop, we limit the keys to **debug.test** namespace.
 
 <br>

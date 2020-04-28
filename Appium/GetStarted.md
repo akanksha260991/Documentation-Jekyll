@@ -52,7 +52,7 @@ Copy the sample code provided in %python% for Android and iOS. Update the desire
 
 <br>
 
-### View Test Results - Dashboard
+## View Test Results - Dashboard
 
 //Same as current
 

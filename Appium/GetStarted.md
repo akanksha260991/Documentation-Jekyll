@@ -8,7 +8,7 @@ BrowserStack gives you instant access to 2000+ real devices. Running your Appium
 
 Follow 3 easy steps to get started with your first Appium test on BrowserStack cloud.
 
-#### 1. Upload your app
+### 1. Upload your app
 Upload your Android app (.apk file) or iOS app (.ipa file) to the BrowserStack servers using the REST API.
 
 ```
@@ -38,13 +38,13 @@ The custom_id is above request is optional. It enables you to set a constant val
 
 If you do not have an .apk or .ipa file and are looking to simply try App Automate, you can download our [Android sample app](https://www.browserstack.com/app-automate/sample-apps/android/WikipediaSample.apk) or [iOS sample app](https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa) and upload it to the BrowserStack servers using the above API.
 
-#### 2. Setup environment
+### 2. Setup environment
 
 //Same as current
 
 
 
-#### 3. Configure and run test
+### 3. Configure and run test
 	
 Copy the sample code provided in %python% for Android and iOS. Update the desired capability "app" with the App URL returned from the above API call.
 

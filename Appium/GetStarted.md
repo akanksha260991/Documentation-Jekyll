@@ -3,7 +3,7 @@
 
 BrowserStack gives you instant access to 2000+ real devices. Running your Appium test automation for native and hybrid mobile apps on BrowserStack is simple. This guide helps you to get started and run your first test.
 
-### Run your first test
+## Run your first test
 >Note: Running your Appium tests on BrowserStack requires a username and an access key.To obtain your username and access keys, sign up for a Free Trial or purchase a plan.
 
 Follow 3 easy steps to get started with your first Appium test on BrowserStack cloud.

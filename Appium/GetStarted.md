@@ -38,7 +38,7 @@ The custom_id is above request is optional. It enables you to set a constant val
 
 If you do not have an .apk or .ipa file and are looking to simply try App Automate, you can download our [Android sample app](https://www.browserstack.com/app-automate/sample-apps/android/WikipediaSample.apk) or [iOS sample app](https://www.browserstack.com/app-automate/sample-apps/ios/BStackSampleApp.ipa) and upload it to the BrowserStack servers using the above API.
 
-For more details on uploading apps view [Upload your app]( http://srey.io/browserstack-docs/docs/app-automate/appium/manage-apps/upload-app) section
+For more details on uploading apps view [Upload your app]( http://srey.io/browserstack-docs/docs/app-automate/appium/manage-apps/upload-app) section.
 
 ### 2. Setup environment
 

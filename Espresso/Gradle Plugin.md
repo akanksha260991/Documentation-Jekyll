@@ -10,7 +10,7 @@ The plugin allows to build your app, debug-app and execute the Espresso tests on
 #### Step 1: Add to build.gradle
 In order to configure the plugin, add the following dependencies and parameters in your app-level `build.gradle` file:
 
-**a.Add the BrowserStack plugin dependencies**
+**a.Add the BrowserStack plugin dependencies** <br>
 Add the dependency and the lines that defines the plugin task as shown:
 
 ```bash
@@ -30,7 +30,7 @@ apply plugin: "com.browserstack.gradle"
 ...
 ```
 
-**b. Add browserStackConfig parameters**
+**b. Add browserStackConfig parameters** <br>
 Add the following lines to authenticate user and load configurations from the json configuration file(details about the config file explained in next step):
 
 ```bash

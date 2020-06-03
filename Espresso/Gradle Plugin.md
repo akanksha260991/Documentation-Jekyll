@@ -10,7 +10,7 @@ The plugin allows to build your app, debug-app and execute the Espresso tests on
 ### Step 1: Add to build.gradle
 In order to configure the plugin, add the following dependencies and parameters in your app-level `build.gradle` file:
 
-**a.Add the BrowserStack plugin dependencies** <br>
+#### a. Add the BrowserStack plugin dependencies
 Add the dependency and the lines that defines the plugin task as shown:
 
 ```bash
@@ -30,7 +30,7 @@ apply plugin: "com.browserstack.gradle"
 ...
 ```
 
-**b. Add browserStackConfig parameters** <br>
+#### b. Add browserStackConfig parameters
 Add the following lines to authenticate user and load configurations from the json configuration file(details about the config file explained in next step):
 
 ```bash
@@ -43,15 +43,14 @@ browserStackConfig {
 > Note: username, accessKey and configFilePath are mandatory for starting tests using gradle plugin for espresso
 <br>
 
-
 ### Step 2: Create an Espresso configuration file
 In this step, you need to create JSON text file that contains all espresso related parameters for configuring your test execution on BrowserStack. These parameters include specifying the devices, debugging options, using device features and so on.
 
-**Select a device**
+#### Select a device
 
 {Add device seletor widget}
 
-**Sample configuration file**
+#### Sample configuration file
 
 ```bash
 {
@@ -65,6 +64,7 @@ In this step, you need to create JSON text file that contains all espresso relat
 }
 ```
 > Note: To view the list of all supported parameters for Espresso tests on BrowserStack, visit complete list of API parameters section inside our [Espresso Get Started documentation](Get Started documentation)
+<br>
 
 ### Step 3: Execute
 
@@ -83,7 +83,7 @@ This will execute the following:
 
 On successful task execution, the test results will be available on the command-line interface, as well as the App Automate dashboard.
 
-**Sample command-line output:**
+#### Sample command-line output:
 
 ```bash
 Most recent DebugApp apk: /Users/{username}/AndroidStudioProjects/espresso-browserstack/app/build/outputs/apk/debug/app-debug.apk
@@ -100,7 +100,7 @@ Response Code : 200
 View build status at https://app-automate.browserstack.com/builds/5a2bac8e53d4786bc2895316badc92299ee22fb9
 ```
 
-### Note:
+#### Note:
 For running tests on a project with no variants, you can simply run following command for uploading and running tests on the debug apk:
 
 ```bash

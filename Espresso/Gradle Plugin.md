@@ -64,7 +64,7 @@ In this step, you need to create JSON text file that contains all espresso relat
     .....
 }
 ```
-> Note: To view the list of all supported parameters for Espresso tests on BrowserStack, visit complete list of API parameters section inside our Espresso Get Started documentation
+> Note: To view the list of all supported parameters for Espresso tests on BrowserStack, visit complete list of API parameters section inside our [Espresso Get Started documentation](Get Started documentation)
 
 #### Step 3: Execute
 
@@ -100,7 +100,7 @@ Response Code : 200
 View build status at https://app-automate.browserstack.com/builds/5a2bac8e53d4786bc2895316badc92299ee22fb9
 ```
 
-**Note:**
+**Note:** <br>
 For running tests on a project with no variants, you can simply run following command for uploading and running tests on the debug apk:
 
 ```bash

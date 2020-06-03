@@ -5,7 +5,7 @@
 
 
 ### Getting Started
-The plugin allows to build your apps and execute the tests on BrowserStack. Github: [BrowserStack Gradle Plugin](https://github.com/browserstack/browserstack-gradle-plugin).
+The plugin allows to build your app, debug-app and execute the Espresso tests on BrowserStack. Github: [BrowserStack Gradle Plugin](https://github.com/browserstack/browserstack-gradle-plugin).
 
 #### Step 1: Add to build.gradle
 In order to configure the plugin, add the following dependencies and parameters in your app-level build.gradle file:

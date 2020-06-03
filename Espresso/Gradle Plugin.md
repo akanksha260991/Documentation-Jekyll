@@ -1,5 +1,5 @@
 # Gradle Plugin
-### Documentation for running Espresso test using BrowserStack's Gradle Plugin.
+#### Documentation for running Espresso test using BrowserStack's Gradle Plugin.
 
 > Note: The new major version of Browserstack espresso gradle plugin 3.0.0 is released. User now needs to create a json config file and specify it in the configFilePath as mentioned in the steps below. Also, the command runDebugBuildOnBrowserstack has now been deprecated.
 
@@ -41,11 +41,8 @@ browserStackConfig {
 }
 ```
 > Note: username, accessKey and configFilePath are mandatory for starting tests using gradle plugin for espresso
+<br>
 
-Execute below command to build your app and run your Espresso test
-```
-gradle runDebugBuildOnBrowserstack
-```
 
 #### Step 2: Create an Espresso configuration file
 In this step, you need to create JSON text file that contains all espresso related parameters for configuring your test execution on BrowserStack. These parameters include specifying the devices, debugging options, using device features and so on.
@@ -70,7 +67,8 @@ In this step, you need to create JSON text file that contains all espresso relat
 > Note: To view the list of all supported parameters for Espresso tests on BrowserStack, visit complete list of API parameters section inside our Espresso Get Started documentation
 
 #### Step 3: Execute
-Execute below command to build your app and run your Espresso test
+
+To build your app and run your Espresso test, execute the command below:
 
 ```bash
 gradle clean executeDebugTestsOnBrowserstack
